@@ -5,7 +5,7 @@ import {
 class StyleCustom{
     static create(options){
         const style = StyleSheet.create(options)
-        style.custom=true;
+        style[customStyleName]=true;
         return style;
     }
 }
