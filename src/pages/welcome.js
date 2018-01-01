@@ -1,12 +1,9 @@
 import React, {Component} from 'react';
-import {
-    Text,
-    View
-} from 'react-native';
 import Base from './base'
-import Icon from 'react-native-vector-icons/FontAwesome';
 import {observer, inject} from 'mobx-react/native';
-import homeStore from "../stores/home";
+import {InputText} from '../components/form/native-base-validate'
+import Form from '../components/form/DataContext'
+import { Container,Header, Content,Separator,Icon,Root,ListItem,Text,Toast} from 'native-base';
 
 @inject('homeStore','welcomeStyle')
 @observer
@@ -15,8 +12,15 @@ export default class Welcome extends Base{
         super(props);
     }
     render(){
-        return (<View style={this.style.container}>
-            <Text>{this.store.title}</Text>
-        </View>);
+        const onChangedHandler = (name,value) => this.store.update(name,value);
+        return (
+            <Container>
+                <Content>
+                    <Form data={this.store.data} onChanged={onChangedHandler}>
+                        <InputText label="姓名" name="name" placeholder="请输入姓名"></InputText>
+                        <InputText label="手机" name="mobile" placeholder="请输入手机"></InputText>
+                    </Form>
+                </Content>
+            </Container>);
     }
 }

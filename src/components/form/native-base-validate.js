@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 import {Item, Input,Icon,Label,ActionSheet,Text,Right,Radio,ListItem} from 'native-base';
-import {observer} from 'mobx-react/native';
+import {inject, observer} from 'mobx-react/native';
 import camelCase from 'camelcase';
 import {DatePickerAndroid, StyleSheet,TouchableOpacity,View} from "react-native";
 import {observable,action} from "mobx";
 
+//为了提高组件的复用性，组件的样式放入组件内
 const style = StyleSheet.create({
     rightPadding:{
         paddingRight:28
@@ -42,7 +43,43 @@ class validateHepler {
         return mess.length > 0;
     }
 }
+class InputBase extends Component{
+}
+@observer
+class InputText extends InputBase{
+    constructor(props){
+        super(props);
+    }
+    render(){
+        const {label,data,name, placeholder,onChanged} = this.props;
+        if(false && validateHepler.getMess(data,name)){
+            return (
+                <Item error fixedLabel>
+                    <Label>{label}</Label>
+                    <Input placeholder={placeholder} value={data[name]} placeholderTextColor='#b1b1b1'  onChangeText={txt => onChanged(name,txt)} />
+                    <Icon name='close-circle' />
+                </Item>
+            )
+        }else {
+            return (
+                <Item fixedLabel style={style.rightPadding}>
+                    <Label>{label}</Label>
+                    <Input placeholder={placeholder} value={data[name]} placeholderTextColor='#b1b1b1' onChangeText={txt => onChanged(name,txt)} />
+                </Item>
+            )
+        }
+    }
+}
 
+
+
+
+
+
+
+
+
+//inject
 const ReadOnlyInput = observer(function ReadOnlyInput({label, value}){
         return (
             <Item fixedLabel style={style.rightPadding}>
@@ -52,25 +89,7 @@ const ReadOnlyInput = observer(function ReadOnlyInput({label, value}){
         )
 });
 
-const ValidateInput = observer(function ValidateInput({label, data , name ,IsValidate, placeholder,onChange,...props}){
-    if(IsValidate && validateHepler.getMess(data,name)){
-        return (
-            <Item error fixedLabel {...props}>
-                <Label>{label}</Label>
-                <Input placeholder={placeholder} value={data[name]} onChangeText={onChange} placeholderTextColor='#b1b1b1' />
-                <Icon name='close-circle' />
-            </Item>
-        )
-    }else {
-        return (
-            <Item fixedLabel style={style.rightPadding} {...props}>
-                <Label>{label}</Label>
-                <Input placeholder={placeholder} value={data[name]} onChangeText={onChange} placeholderTextColor='#b1b1b1' />
-            </Item>
-        )
-    }
-});
-
+//inject
 const ValidateInputInt = observer(function ValidateInputInt({label, data , name ,IsValidate, placeholder,onChange,...props}){
     let value = data[name];
     if(IsValidate && validateHepler.getMess(data,name)){
@@ -91,6 +110,7 @@ const ValidateInputInt = observer(function ValidateInputInt({label, data , name 
     }
 });
 
+//inject
 const ValidateChooseItem = observer(function ValidateChooseItem({label, data , name ,getOptions,selectOptions,optionslabel,IsValidate, placeholder,onChange,...props}){
     let onPress =() => {
         let options = getOptions?getOptions():[];
@@ -175,6 +195,7 @@ class ValidateInputDate extends Component{
     }
 }
 
+//inject
 const ValidRadioItem = observer(function ValidRadioItem({label, value ,selectValue, onChanged}){
     let icon = value == selectValue ? "md-radio-button-on":"md-radio-button-off";
     return (
@@ -188,6 +209,7 @@ const ValidRadioItem = observer(function ValidRadioItem({label, value ,selectVal
         </ListItem>);
 })
 
+//inject
 @observer
 class ValidateRadioInput extends Component{
     constructor(props){
@@ -239,4 +261,4 @@ class ValidateRadioInput extends Component{
     }
 }
 
-export { ValidateInput,ValidateInputInt,ValidateInputDate,ReadOnlyInput,ValidateChooseItem,ValidateRadioInput }
+export { InputBase , InputText,ValidateInputInt,ValidateInputDate,ReadOnlyInput,ValidateChooseItem,ValidateRadioInput }
