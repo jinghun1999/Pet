@@ -1,12 +1,13 @@
-import {observable, computed, action, runInAction, useStrict} from 'mobx'
+import {observable, computed,extendObservable, action, runInAction, useStrict} from 'mobx'
 
 export default class Base {
     customValidateHeader = "validateItem";
+
     @observable submited=false;
+
     @action
     onValidate(){
         this.submited=true;
-
         let mess = [];//可以代码自动生成
         //1、自定义
         for(let key in this.data.$mobx.values){

@@ -33,7 +33,7 @@ class validateHepler {
         let mess=[];
         let errNode = camelCase( 'validateError',name );
         let printErrNode = camelCase('validateItem',name);
-
+debugger;
         if( dataitem[errNode] && dataitem[errNode] != null && dataitem[errNode]!=""  ){
             mess.push(dataitem[errNode]);
         }
@@ -51,8 +51,8 @@ class InputText extends InputBase{
         super(props);
     }
     render(){
-        const {label,data,name, placeholder,onChanged} = this.props;
-        if(false && validateHepler.getMess(data,name)){
+        const {label,data,name, placeholder,submited,onChanged} = this.props;
+        if(submited && validateHepler.getMess(data,name)){
             return (
                 <Item error fixedLabel>
                     <Label>{label}</Label>

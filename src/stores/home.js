@@ -10,7 +10,7 @@ class HomeStore extends Base{
         @validate(/\S+$/, '手机必填')
         @observable mobile:"",
 
-        @computed get validateItemTransferName(){
+        @computed get validateItemName(){
             //1、自定义验证
             if( this.name && this.name == "1" ) {
                 return "姓名不能为1";

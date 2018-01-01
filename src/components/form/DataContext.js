@@ -9,11 +9,11 @@ export default class DataContext extends Component{
         super(props);
     }
     render() {
-        let {children,onChanged,data} = this.props;
+        let {children,onChanged,data,submited} = this.props;
         var childrenWithProps = React.Children.map(children, child =>{
             //若 child 继承至 InputBase
             if(child.type && child.type.prototype && InputBase.prototype.isPrototypeOf(child.type.prototype)){
-                return React.cloneElement(child, { onChanged:onChanged,data:data})
+                return React.cloneElement(child, { onChanged:onChanged,data:data,submited:submited})
             }else{
                 return child;
             }
