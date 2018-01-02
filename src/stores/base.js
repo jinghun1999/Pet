@@ -24,4 +24,7 @@ export default class Base {
         }
         return mess;
     }
+    @action onUpdate(name,value){
+        this.data[name]=value;
+    }
 }
