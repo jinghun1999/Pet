@@ -25,7 +25,7 @@ class HomeStore extends Base{
         //this.data.name="12";
         Object.assign( this.data , this.data , config );
     }
-    @action update(name,value){
+    @action onUpdate(name,value){
         this.data[name]=value;
     }
 }

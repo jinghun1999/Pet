@@ -33,7 +33,6 @@ class validateHepler {
         let mess=[];
         let errNode = camelCase( 'validateError',name );
         let printErrNode = camelCase('validateItem',name);
-debugger;
         if( dataitem[errNode] && dataitem[errNode] != null && dataitem[errNode]!=""  ){
             mess.push(dataitem[errNode]);
         }
@@ -51,12 +50,14 @@ class InputText extends InputBase{
         super(props);
     }
     render(){
-        const {label,data,name, placeholder,submited,onChanged} = this.props;
-        if(submited && validateHepler.getMess(data,name)){
+        const {label,name, placeholder,store} = this.props;
+        const onChanged = store.onUpdate.bind(store);
+
+        if(store.submited && validateHepler.getMess(store.data,name)){
             return (
                 <Item error fixedLabel>
                     <Label>{label}</Label>
-                    <Input placeholder={placeholder} value={data[name]} placeholderTextColor='#b1b1b1'  onChangeText={txt => onChanged(name,txt)} />
+                    <Input placeholder={placeholder} value={store.data[name]} placeholderTextColor='#b1b1b1'  onChangeText={txt => onChanged(name,txt)} />
                     <Icon name='close-circle' />
                 </Item>
             )
@@ -64,7 +65,7 @@ class InputText extends InputBase{
             return (
                 <Item fixedLabel style={style.rightPadding}>
                     <Label>{label}</Label>
-                    <Input placeholder={placeholder} value={data[name]} placeholderTextColor='#b1b1b1' onChangeText={txt => onChanged(name,txt)} />
+                    <Input placeholder={placeholder} value={store.data[name]} placeholderTextColor='#b1b1b1' onChangeText={txt => onChanged(name,txt)} />
                 </Item>
             )
         }
