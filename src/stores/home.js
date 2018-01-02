@@ -12,18 +12,25 @@ class HomeStore extends Base{
 
         @computed get validateItemName(){
             //1、自定义验证
-            if( this.name && this.name == "1" ) {
-                return "姓名不能为1";
+            if(!this.name) {
+                return "";//返回错误信息
             }else{
                 return "";
             }
         },
     }
 
-    @observable title="这里是首页"
+    @observable title=""
     @action updateConfig(config){
-        //this.data.name="12";
         Object.assign( this.data , this.data , config );
+    }
+
+    fill(){
+        serviceProxy.Tenant.GetTenantDBByTenantID({tenantID:'40C521CF-C4B8-4445-97AC-0CA16D830D24'}).then(result=>{
+            alert("成功");
+        },err=>{
+            alert(JSON.stringify(err));
+        });
     }
 }
 

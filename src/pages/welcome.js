@@ -12,10 +12,7 @@ export default class Welcome extends Base{
     }
 
     onPress(){
-        const mess = this.store.onValidate();
-        if(mess && mess.length > 0){
-        }else{
-        }
+        this.store.fill();
     }
 
     render(){
