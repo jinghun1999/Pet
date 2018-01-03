@@ -28,7 +28,7 @@ const request = {
             };
             let errorCallback = (error) => {
                 //登录过期
-                if (error.status == 450) {
+                if (error && error.status == 450) {
                     //tools.showToast('认证未通过，已为您重新登录')
                     user.relogin(() => {
                         getHandler(url, params, successCallback, errorCallback);
@@ -51,22 +51,25 @@ const request = {
                 url += '&' + paramsArray.join('&')
             }
         }
-
         fetch(url, {
             method: 'GET',
             headers: {
                 'Cache-Control': 'no-cache',
-                'Authorization': 'Mobile ' + user.token.access_token,
+                'Authorization': (user && user.token ? user.token:"") ,
             }
         }).then((response) => response.json())
             .then((responseData) => {
                 if (responseData.Sign) {
                     successCallback(responseData.Message)
                 } else {
-                    errorCallback(responseData.Exception);
+                    if(!responseData.Exception){
+                        errorCallback("请求异常");
+                    }else{
+                        errorCallback(responseData.Exception);
+                    }
                 }
             }).catch((error) => {
-                tools.showToast('数据请求失败，请稍后再试！');
+                showToast('数据请求失败，请稍后再试！');
                 errorCallback(error);
         });
     },
@@ -91,15 +94,11 @@ const request = {
 
     _fetchPost(url, params, type){
         let headers = {
-                'Authorization': 'Bearer ' + user.token.access_token,
+                'Authorization':(user && user.token ? user.token:""),
             },
             body = null;
         if (params) {
             if (typeof params == 'object' && params.constructor == Object) {
-                // let paramsArray = []
-                // Object.keys(params).forEach(key => paramsArray.push(key + '=' + encodeURIComponent(params[key])))
-                // body = paramsArray.join('&');
-                // headers["Content-Type"] = "application/x-www-form-urlencoded";
                 headers['Content-Type'] = 'application/json';
                 body = JSON.stringify(params);
             } else if (typeof params == 'object' && params instanceof FormData) {
@@ -109,7 +108,7 @@ const request = {
                 body = params;
             }
         }
-        debugger;
+
         return new Promise(function (resolve, reject) {
             fetch(url, {
                 method: 'POST',
@@ -117,14 +116,18 @@ const request = {
                 body
             }).then((response) => type == 'text' ? response.text() : response.json())
                 .then((responseData) => {
-                    if (responseData.successful) {
-                        resolve(responseData.data)
+                    if (responseData.Sign) {
+                        resolve(responseData.Message)
                     } else {
-                        reject(responseData.message)
+                        if(!responseData.Exception){
+                            reject("请求异常");
+                        }else{
+                            reject(responseData.Exception);
+                        }
                     }
                 }).catch((error) => {
-                tools.showToast('数据服务器异常，请稍后再试!');
-                //reject(error);
+                    showToast('数据服务器异常，请稍后再试!');
+                    reject(error);
             }).done();
         })
     },
