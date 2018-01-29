@@ -23,4 +23,9 @@ const welcomeStyle = StyleCustom.create({
     }
 });
 
-export default {homeStyle,welcomeStyle}
+const loginStyle = StyleCustom.create({
+    bg:{
+    }
+});
+
+export default {homeStyle,welcomeStyle,loginStyle}

@@ -1,5 +1,5 @@
 const config = {
-    appName: '嘟嘟',
+    appName: '旺财宠物',
     // 版本信息
     versionCode: 1,
     versionName: "1.0.6",
