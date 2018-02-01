@@ -50,6 +50,10 @@ const inputBaseStyle=StyleCustom.create({
     radio:{
         fontSize:20,
         color:'#101010'
+    },
+    inputIcon:{
+        color:'#2169d5',
+        paddingRight:5
     }
 });
 

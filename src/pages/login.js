@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Base from './base'
 import {observer, inject} from 'mobx-react/native';
-import {InputText,FootBar} from '../components/form/native-base-validate'
+import {IconInputText,FootBar} from '../components/form/native-base-validate'
 import Form from '../components/form/DataContext'
 import { Container,Content,Button,Card,Text,Icon} from 'native-base';
 import {Logo} from '../components'
@@ -34,10 +34,10 @@ export default class Login extends Base{
         return (
             <View style={{flex:1}}>
                 <Logo />
-                <View style={{flex:1, justifyContent:'center' , marginLeft:20,marginRight:20 }}>
+                <View style={{flex:1, justifyContent:'center' , marginLeft:40,marginRight:40 }}>
                     <Form store={this.store}>
-                        <InputText label="手机" name="name" placeholder="请输入手机号"></InputText>
-                        <InputText label="密码" name="mobile" placeholder="请输入密码"></InputText>
+                        <IconInputText icoName="md-phone-portrait" label="手机" name="name" placeholder="请输入手机号"></IconInputText>
+                        <IconInputText icoName="ios-lock" label="密码" name="mobile" placeholder="请输入密码"></IconInputText>
                     </Form>
                 </View>
                 <FootBar buttons={this.buttons} />
