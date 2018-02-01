@@ -21,7 +21,7 @@ export default class App extends Component<{}> {
       let items = {...stores,...styles};
     return (
         <Root>
-            <View style={style.container}>
+            <View style={_style.container}>
                 <Provider {...items}>
                     <TootToot />
                 </Provider>

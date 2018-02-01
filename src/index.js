@@ -36,7 +36,7 @@ import RootNavigator from './common/RootNavigator';
     }
     render() {
         return (
-            <View style={style.container}>
+            <View style={_style.container}>
                 <RootNavigator onNavigationStateChange={(prevNav, nav, action) => {
                     console.log('prevNav=',prevNav);
                     console.log('nav=',nav);

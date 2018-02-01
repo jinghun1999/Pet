@@ -25,7 +25,7 @@ export default class DataContext extends Component{
         let {children,store} = this.props;
         var childrenWithProps = React.Children.map(children, child =>{
             //若 child 继承至 InputBase
-            if(child.type && child.type.prototype && InputBase.prototype.isPrototypeOf(child.type.prototype)){
+            if(child.type && child.type.prototype && child.__proto__.isPrototypeOf(InputBase)){
                 return React.cloneElement(child, {store:store})
             }else{
                 return child;

@@ -14,7 +14,7 @@ global.request = proxy;
 global._ = _;
 global.guid = extend.guid;
 global.showToast = extend.showToast;
-global.style=publicStyle;//全局Style
+global._style=publicStyle;//全局Style
 global.user = user;
 
 //自定义组件样式的识别标识 hasOwnProperty(customStyleName) && object[customStyleName] 表示该对象为一个自定义styles对象
