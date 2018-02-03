@@ -41,14 +41,40 @@ export default class QuickMenus extends Component
         title:'报表',
         onHandler:()=>{}
     },{
-        iconName:'ios-stats',
-        title:'报表',
-        onHandler:()=>{}
-    },{
         iconName:'ios-more-outline',
         title:'更多',
         onHandler:()=>{}
+    },{
+        iconName:'',
+        title:'',
+        onHandler:()=>{
+
+        }
+    },{
+        iconName:'',
+        title:'',
+        onHandler:()=>{
+
+        }
+    },{
+        iconName:'',
+        title:'',
+        onHandler:()=>{
+
+        }
     }];
+
+    renderBar(item,key){
+        if(!item.iconName){
+            return (<View style={[styles.barMenu]} key={key}>
+            </View>);
+        }else{
+            return (<View style={[styles.barMenu]} key={key}>
+                <Icon name={item.iconName} style={styles.barIcon}></Icon>
+                <Text style={styles.barText}>{item.title}</Text>
+            </View>);
+        }
+    }
 
     renderRow(index,items){
         if( items==null || items.length == 0 ){
@@ -59,12 +85,10 @@ export default class QuickMenus extends Component
         let end = start + (rowSize-1);
         let rowItems = items.slice(start,end + 1);//slice 函数实际的获取元素范围为（start , end - 1），所以必须给end + 1，才能保证end被取出来
 
+
         return (<View style={[styles.barRow]}>
             {
-                rowItems.map((item,key)=> <View style={[styles.barMenu]} key={key}>
-                    <Icon name={item.iconName} style={styles.barIcon}></Icon>
-                    <Text style={styles.barText}>{item.title}</Text>
-                </View>)
+                rowItems.map((item,key)=> this.renderBar(item,key))
             }
         </View>);
     }
