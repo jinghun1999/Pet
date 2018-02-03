@@ -14,8 +14,25 @@ export default StyleSheet.create({
     fillRow:{
         flex:1,
         flexDirection:'row',
+        alignItems:'center',
         justifyContent:'center'
     },
+    fillColumn:{
+        flex:1,
+        alignItems:'center',
+        justifyContent:'flex-start'
+    },
+
+    font1:{
+        color:'#2169D5',
+        fontSize:16
+    },
+
+    icon1:{
+        color:'#2169D5',
+        fontSize:20
+    },
+
     actions:{
         flex:1,
         marginRight:50,
