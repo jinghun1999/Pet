@@ -17,12 +17,21 @@ export default StyleSheet.create({
         alignItems:'center',
         justifyContent:'center'
     },
+    autoRow:{
+        flexDirection:'row',
+        alignItems:'center',
+        justifyContent:'center'
+    },
     fillColumn:{
         flex:1,
         alignItems:'center',
         justifyContent:'flex-start'
     },
-
+    fillCenterColumn:{
+        flex:1,
+        alignItems:'center',
+        justifyContent:'center'
+    },
     font1:{
         color:'#2169D5',
         fontSize:16
