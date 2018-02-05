@@ -7,7 +7,7 @@ import {
 } from 'react-native'
 import { observable, action } from "mobx";
 import { observer } from "mobx-react/native";
-import RootNavigator from './common/RootNavigator';
+import {RootNavigator} from './common';
 
 @observer class TootTootApp extends Component {
     constructor(props, context) {

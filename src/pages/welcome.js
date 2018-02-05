@@ -3,22 +3,27 @@ import Base from './base'
 import {observer, inject} from 'mobx-react/native';
 import {InputText} from '../components/form/native-base-validate'
 import Form from '../components/form/DataContext'
-import { Container,Header, Content,Separator,Icon,Root,ListItem,Text,Button,Toast} from 'native-base';
+import { Container,Header, Content,Text,Spinner} from 'native-base';
 
-@inject('homeStore','welcomeStyle')
+@observer
+@inject('welcomeStore','loginStore','welcomeStyle')
 export default class Welcome extends Base{
     constructor(props){
         super(props);
     }
+    componentDidMount(){
+        this.stores.loginStore.onLoadLocal(r=>{
+            this.store.onEndLoading();
+        });
+    }
     render(){
+        let { loading } = this.store;
         return (
             <Container>
                 <Content>
-                    <Form store={this.store}>
-
-
-
-                    </Form>
+                    {
+                        loading?<Spinner color="blue"></Spinner>:<Text>旺财宠物</Text>
+                    }
                 </Content>
             </Container>);
     }

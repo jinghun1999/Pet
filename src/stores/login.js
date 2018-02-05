@@ -1,11 +1,9 @@
-import {observable, computed, action, runInAction, useStrict} from 'mobx'
+import {observable,action,computed, runInAction, useStrict} from 'mobx'
 import Base from './base'
 import { create,persist } from 'mobx-persist'
 import validate from "mobx-form-validate";
 import _ from "lodash";
-import hydrate from '../common/hydrate'
-
-const Buffer = require('buffer').Buffer
+import {hydrate} from '../common'
 
 useStrict(true);
 class LoginStore extends Base{
@@ -35,9 +33,6 @@ class LoginStore extends Base{
     //提交登陆
     @action
     onCommit(){
-
-        alert( JSON.stringify(this.token) );
-
         serviceProxy.Auth.Login({
             identity:this.data.mobile,
             password:this.data.password,
@@ -55,8 +50,11 @@ class LoginStore extends Base{
             this.token = observable(r.Token);
         });
     }, 400)
+    @action onLoadLocal=(callback)=>{
+        hydrate('LoginStore', this).then(o=>callback(this));
+    }
 }
 
 const _loginStore = new LoginStore();
 export default _loginStore;
-hydrate('LoginStore', _loginStore);
+//hydrate('LoginStore', _loginStore);
