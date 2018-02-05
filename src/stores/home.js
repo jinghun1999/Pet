@@ -8,7 +8,6 @@ class HomeStore extends Base{
     }
 
     fill(){
-
     }
 }
 

@@ -15,14 +15,15 @@ import {
 export default class Login extends Base{
     constructor(props){
         super(props);
-
     }
     buttons=[];
     componentWillMount(){
         this.buttons.push({
             title:'登陆' ,
             default:true,
-            onPress:()=>{}
+            onPress:()=>{
+                this.store.onCommit();
+            }
         });
         this.buttons.push({
             title:'忘记密码' ,
@@ -32,16 +33,18 @@ export default class Login extends Base{
 
     render(){
         return (
-            <View style={{flex:1}}>
+            <Container>
+                <Content>
                 <Logo />
                 <View style={{flex:1, justifyContent:'center' , marginLeft:40,marginRight:40 }}>
                     <Form store={this.store}>
-                        <IconInputText icoName="md-phone-portrait" label="手机" name="name" placeholder="请输入手机号"></IconInputText>
-                        <IconInputText icoName="ios-lock" label="密码" name="mobile" placeholder="请输入密码"></IconInputText>
+                        <IconInputText icoName="md-phone-portrait" label="手机" name="mobile" placeholder="请输入手机号"></IconInputText>
+                        <IconInputText icoName="ios-lock" label="密码" name="password" placeholder="请输入密码"></IconInputText>
                     </Form>
                 </View>
                 <FootBar buttons={this.buttons} />
-            </View>
+                </Content>
+            </Container>
         );
     }
 }

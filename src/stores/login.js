@@ -1,19 +1,25 @@
 import {observable, computed, action, runInAction, useStrict} from 'mobx'
 import Base from './base'
-import { persist } from 'mobx-persist'
+import { create,persist } from 'mobx-persist'
 import validate from "mobx-form-validate";
+import _ from "lodash";
+import hydrate from '../common/hydrate'
 
 const Buffer = require('buffer').Buffer
 
 useStrict(true);
 class LoginStore extends Base{
     //主数据
-    @observable data={
+    @persist('object') @observable data={
         @validate(/\S+$/, '手机号必填')
-        @observable mobile:"",
+            @observable mobile:"",
 
         @validate(/\S+$/, '密码必填')
-        @observable password:"",
+            @observable password:"",
+
+        @observable verCode:"",
+
+        @observable type:"m",
 
         @computed get validateItemMobile(){
             //1、自定义验证
@@ -24,30 +30,33 @@ class LoginStore extends Base{
             }
         },
     }
-
     //凭证数据
-    @persist @observable token = {}
-
-    @action fill(r){
-        debugger;
-        //暂时这样，以后改成从后台填充
-        //1、验证
-        if(!r || !r.Mobile || !r.HospitalId || !r.Hospitals || r.Hospitals.length==0){
-            throw new Error("验证错误");
-        }
-        //2、生成token
-        const hospital = r.Hospitals.fristOne(item=>item.ID==r.HospitalId);
-        if( hospital == null ){
-            throw new Error("数据错误");
-        }
-        const token = "Mobile " + new Buffer(r.Mobile + ":" + hospital.Registration + ":" + r.Token.token).toString('base64');
-        //3、填充用户数据
-        this.token = token;
-    }
-
+    @persist('object') @observable token = {}
+    //提交登陆
     @action
-    relogin(callback){
+    onCommit(){
+
+        alert( JSON.stringify(this.token) );
+
+        serviceProxy.Auth.Login({
+            identity:this.data.mobile,
+            password:this.data.password,
+            verCode:this.data.verCode,
+            type:this.data.type
+        }).then(
+            data=>{
+                this.fill(data);
+            },err=>{
+                showToast(err);
+            });
     }
+    @action fill = _.debounce((r)=>{
+        runInAction(()=>{
+            this.token = observable(r.Token);
+        });
+    }, 400)
 }
 
-export default new LoginStore();
+const _loginStore = new LoginStore();
+export default _loginStore;
+hydrate('LoginStore', _loginStore);
