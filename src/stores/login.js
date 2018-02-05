@@ -4,6 +4,7 @@ import { create,persist } from 'mobx-persist'
 import validate from "mobx-form-validate";
 import _ from "lodash";
 import {hydrate} from '../common'
+import { NavigationActions } from 'react-navigation'
 
 useStrict(true);
 class LoginStore extends Base{
@@ -52,6 +53,28 @@ class LoginStore extends Base{
     }, 400)
     @action onLoadLocal=(callback)=>{
         hydrate('LoginStore', this).then(o=>callback(this));
+    }
+    // onCheck(dispatch){
+    //     resetAction = NavigationActions.reset({
+    //         index: 0,
+    //         actions: [
+    //             NavigationActions.navigate({routeName:'Main',params:{transition:'forVertical'}})//要跳转到的页面名字forVertical、forHorizontal
+    //         ]
+    //     });
+    //     dispatch(resetAction)
+    // }
+    onCheckToken(navigation){
+
+        debugger;
+
+        navigation.navigate('Login',{transition:'forHorizontal'});
+        // resetAction = NavigationActions.reset({
+        //     index: 0,
+        //     actions: [
+        //         NavigationActions.navigate({routeName:'Login'})//要跳转到的页面名字
+        //     ]
+        // });
+        // dispatch(resetAction)
     }
 }
 

@@ -9,6 +9,7 @@ import Base from './base'
 import {observer, inject} from 'mobx-react/native';
 import {InputText} from '../components/form/native-base-validate'
 import Form from '../components/form/DataContext'
+import {NavigationActions} from "react-navigation";
 
 @observer
 @inject('welcomeStore','loginStore','welcomeStyle')
@@ -18,7 +19,15 @@ export default class Welcome extends Base{
     }
     componentDidMount(){
         this.stores.loginStore.onLoadLocal(r=>{
-            this.store.onEndLoading();
+            //判断是否需要登陆
+            const { dispatch } = this.props.navigation;
+            resetAction = NavigationActions.reset({
+                index: 0,
+                actions: [
+                    NavigationActions.navigate({routeName:'Main',params:{transition:'forVertical'}})//要跳转到的页面名字forVertical、forHorizontal
+                ]
+            });
+            dispatch(resetAction)
         });
     }
     render(){
