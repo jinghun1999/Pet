@@ -33,7 +33,7 @@ class LoginStore extends Base{
     @persist('object') @observable token = {}
     //提交登陆
     @action
-    onCommit(){
+    onCommit(sucessCallBack,errCallBack){
         serviceProxy.Auth.Login({
             identity:this.data.mobile,
             password:this.data.password,
@@ -42,8 +42,13 @@ class LoginStore extends Base{
         }).then(
             data=>{
                 this.fill(data);
+                if(sucessCallBack){
+                    sucessCallBack();
+                }
             },err=>{
-                showToast(err);
+                if(errCallBack){
+                    errCallBack(err);
+                }
             });
     }
     @action fill = _.debounce((r)=>{
@@ -54,30 +59,29 @@ class LoginStore extends Base{
     @action onLoadLocal=(callback)=>{
         hydrate('LoginStore', this).then(o=>callback(this));
     }
-    // onCheck(dispatch){
-    //     resetAction = NavigationActions.reset({
-    //         index: 0,
-    //         actions: [
-    //             NavigationActions.navigate({routeName:'Main',params:{transition:'forVertical'}})//要跳转到的页面名字forVertical、forHorizontal
-    //         ]
-    //     });
-    //     dispatch(resetAction)
-    // }
-    onCheckToken(navigation){
+    onCheckToken(timeOutHandler,refreshHandler,sucessHandler){
+        if( JSON.stringify(this.token) === "{}" || this.token==null ){
+            timeOutHandler();//已经过期
+            return;
+        }
+        if( !this.token.token == null || !this.token.timeout == null){
+            timeOutHandler();//已经过期
+            return;
+        }
 
-        debugger;
-
-        navigation.navigate('Login',{transition:'forHorizontal'});
-        // resetAction = NavigationActions.reset({
-        //     index: 0,
-        //     actions: [
-        //         NavigationActions.navigate({routeName:'Login'})//要跳转到的页面名字
-        //     ]
-        // });
-        // dispatch(resetAction)
+        let timeout = this.token.timeout.ToDateTime();
+        let now = new Date();
+        if(timeout < now){
+            timeOutHandler();//已经过期
+        }else if( now.InterVal(timeout) < 15 ){
+            refreshHandler();//快过期
+        }
+        else{
+            //一切顺利
+            sucessHandler();
+        }
     }
 }
 
 const _loginStore = new LoginStore();
 export default _loginStore;
-//hydrate('LoginStore', _loginStore);

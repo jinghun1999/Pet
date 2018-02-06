@@ -17,10 +17,21 @@ export default class Welcome extends Base{
     constructor(props){
         super(props);
     }
+
     componentDidMount(){
         this.stores.loginStore.onLoadLocal(r=>{
+
+            //alert( JSON.stringify(this.stores.loginStore) );
+
+            this.readyApp(this.props.navigation,this.stores.loginStore);
+        });
+    }
+
+    readyApp(navigation,loginStore){
+        serviceProxy.onReady(navigation,loginStore);
+        serviceProxy.Gload.GetConfig().then(function(o){
             //判断是否需要登陆
-            const { dispatch } = this.props.navigation;
+            const { dispatch } = navigation;
             resetAction = NavigationActions.reset({
                 index: 0,
                 actions: [
@@ -28,8 +39,11 @@ export default class Welcome extends Base{
                 ]
             });
             dispatch(resetAction)
+        },function (err) {
+            showToast(err.mess);
         });
     }
+
     render(){
         let { loading } = this.store;
         return (

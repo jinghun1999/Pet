@@ -9,6 +9,7 @@ import {Logo} from '../components'
 import {
     View,
 } from 'react-native'
+import {NavigationActions} from "react-navigation";
 
 
 @inject('loginStore','loginStyle')
@@ -22,7 +23,18 @@ export default class Login extends Base{
             title:'登陆' ,
             default:true,
             onPress:()=>{
-                this.store.onCommit();
+                this.store.onCommit(()=>{
+                    const { dispatch } = this.props.navigation;
+                    resetAction = NavigationActions.reset({
+                        index: 0,
+                        actions: [
+                            NavigationActions.navigate({routeName:'Main',params:{transition:'forVertical'}})//要跳转到的页面名字forVertical、forHorizontal
+                        ]
+                    });
+                    dispatch(resetAction);
+                },err=>{
+                    showToast(err.mess);
+                });
             }
         });
         this.buttons.push({

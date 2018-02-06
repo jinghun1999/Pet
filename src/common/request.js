@@ -16,7 +16,6 @@ const request = {
      * @param callback 回调方法， type: function
      */
     getJson(url, params){
-        debugger;
         return this._fetchGet(url, params);
     },
 
@@ -27,20 +26,11 @@ const request = {
                 resolve(result)//成功调用
             };
             let errorCallback = (error) => {
-                //登录过期
-                if (error && error.status == 450) {
-                    //tools.showToast('认证未通过，已为您重新登录')
-                    user.relogin(() => {
-                        getHandler(url, params, successCallback, errorCallback);
-                    });
-                }else{
-                    reject(error)//异常调用
-                }
+                reject(error)//异常调用
             };
             getHandler(url, params, successCallback, errorCallback)
         })
     },
-
     doGet(url, params, successCallback, errorCallback){
         if (params) {
             let paramsArray = [];
@@ -51,27 +41,31 @@ const request = {
                 url += '&' + paramsArray.join('&')
             }
         }
+
         fetch(url, {
             method: 'GET',
             headers: {
                 'Cache-Control': 'no-cache',
-                'Authorization': (user && user.token ? user.token:"") ,
+                'Authorization': (user && user.token && user.token.token ? user.token.token:"") ,
             }
-        }).then((response) => response.json())
-            .then((responseData) => {
+        }).then(response=>{
+            //收获成功，开始解析
+            response.json().then(responseData=>{
                 if (responseData.Sign) {
-                    successCallback(responseData.Message)
+                    successCallback(responseData.Message);
                 } else {
                     if(!responseData.Exception){
-                        errorCallback("请求异常");
+                        errorCallback({ status : 9999 , mess : '访问错误' });//未能识别到错误
                     }else{
-                        errorCallback(responseData.Exception);
+                        errorCallback({ status : 9998 , mess : responseData.Exception });//应用程序抛出的业务错误
                     }
                 }
-            }).catch((error) => {
-                showToast('数据请求失败，请稍后再试！');
-                errorCallback(error);
-        });
+            }).catch( error => {
+                errorCallback({status:response.status?response.status:9997 , mess:'数据请求失败'});
+            });
+        }).catch((error)=>{
+            errorCallback({status:9996 , mess:'网络请求失败'});
+        }).done();
     },
 
 
@@ -94,7 +88,7 @@ const request = {
 
     _fetchPost(url, params, type){
         let headers = {
-                'Authorization':(user && user.token ? user.token:""),
+                'Authorization':(user && user.token && user.token.token ? user.token.token:""),
             },
             body = null;
         if (params) {
@@ -114,21 +108,43 @@ const request = {
                 method: 'POST',
                 headers,
                 body
-            }).then((response) => type == 'text' ? response.text() : response.json())
-                .then((responseData) => {
+            }).then(response=>{
+                //收获成功，开始解析
+                response.json().then(responseData=>{
                     if (responseData.Sign) {
-                        resolve(responseData.Message)
+                        successCallback(responseData.Message);
                     } else {
                         if(!responseData.Exception){
-                            reject("请求异常");
+                            errorCallback({ status : 9999 , mess : '访问错误' });//未能识别到错误
                         }else{
-                            reject(responseData.Exception);
+                            errorCallback({ status : 9998 , mess : responseData.Exception });//应用程序抛出的业务错误
                         }
                     }
-                }).catch((error) => {
-                    showToast('数据服务器异常，请稍后再试!');
-                    reject(error);
+                }).catch( error => {
+                    errorCallback({status:response.status?response.status:9997 , mess:'数据请求失败'});
+                });
+            }).catch((error)=>{
+                errorCallback({status:9996 , mess:'网络请求失败'});
             }).done();
+
+            // fetch(url, {
+            //     method: 'POST',
+            //     headers,
+            //     body
+            // }).then((response) => type == 'text' ? response.text() : response.json())
+            //     .then((responseData) => {
+            //         if (responseData.Sign) {
+            //             resolve(responseData.Message)
+            //         } else {
+            //             if(!responseData.Exception){
+            //                 reject("请求异常");
+            //             }else{
+            //                 reject(responseData.Exception);
+            //             }
+            //         }
+            //     }).catch((error) => {
+            //         reject(error);
+            // }).done();
         })
     },
 };

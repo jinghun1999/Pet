@@ -4,7 +4,7 @@ import proxy from './requestProxy';
 import extend from './extend';
 import _ from "lodash";
 import publicStyle from '../styles/public';
-import user from '../stores/user'
+import user from '../stores/login'
 
 import symbols from 'es6-symbol'
 global.__IOS__ = Platform.OS === 'android';
