@@ -22,7 +22,7 @@ class WebApiProxy {
         Add:params=>this.do(serverAddress,"Api/ItemType/Add",RequestType.Post,params)
     }
     Gload = {
-        GetConfig:()=>this.do(serverAddress,"Api/Persons/GetUserConfig",RequestType.Get)
+        GetConfig:()=>this.do(serverAddress,"Api/Persons/GetUserConfig",RequestType.Get),
     }
     do(head,url,type,params){
         let parent=this;

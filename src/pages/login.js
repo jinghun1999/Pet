@@ -24,14 +24,20 @@ export default class Login extends Base{
             default:true,
             onPress:()=>{
                 this.store.onCommit(()=>{
-                    const { dispatch } = this.props.navigation;
-                    resetAction = NavigationActions.reset({
-                        index: 0,
-                        actions: [
-                            NavigationActions.navigate({routeName:'Main',params:{transition:'forVertical'}})//要跳转到的页面名字forVertical、forHorizontal
-                        ]
+                    //在重新获取用户配置信息的基础之上，打开主页
+                    serviceProxy.Gload.GetConfig().then(function(o){
+                        appParamter=o;
+                        const { dispatch } = navigation;
+                        resetAction = NavigationActions.reset({
+                            index: 0,
+                            actions: [
+                                NavigationActions.navigate({routeName:'Main',params:{transition:'forVertical'}})//要跳转到的页面名字forVertical、forHorizontal
+                            ]
+                        });
+                        dispatch(resetAction)
+                    },function (err) {
+                        showToast(err.mess);
                     });
-                    dispatch(resetAction);
                 },err=>{
                     showToast(err.mess);
                 });

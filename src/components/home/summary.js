@@ -15,21 +15,21 @@ export default class Summary extends Component
                 <View style={_style.fillCenterColumn}>
                     <Text style={_style.font1}>今日销售</Text>
                     <View style={_style.autoRow}>
-                        <Text style={_style.font1}>200</Text>
+                        <Text style={_style.font1}>{appParamter.Sale}</Text>
                         <Icon name="logo-yen" style={_style.icon1}></Icon>
                     </View>
                 </View>
                 <View style={_style.fillCenterColumn}>
                     <Text style={_style.font1}>今日充值</Text>
                     <View style={_style.autoRow}>
-                        <Text style={_style.font1}>200</Text>
+                        <Text style={_style.font1}>{appParamter.Recharge}</Text>
                         <Icon name="logo-yen" style={_style.icon1}></Icon>
                     </View>
                 </View>
                 <View style={_style.fillCenterColumn}>
                     <Text style={_style.font1}>今日增加会员</Text>
                     <View style={_style.autoRow}>
-                        <Text style={_style.font1}>200</Text>
+                        <Text style={_style.font1}>{appParamter.IncreaseMember}</Text>
                         <Icon name="ios-people" style={_style.icon1}></Icon>
                     </View>
                 </View>

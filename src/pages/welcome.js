@@ -20,9 +20,6 @@ export default class Welcome extends Base{
 
     componentDidMount(){
         this.stores.loginStore.onLoadLocal(r=>{
-
-            //alert( JSON.stringify(this.stores.loginStore) );
-
             this.readyApp(this.props.navigation,this.stores.loginStore);
         });
     }
@@ -30,7 +27,7 @@ export default class Welcome extends Base{
     readyApp(navigation,loginStore){
         serviceProxy.onReady(navigation,loginStore);
         serviceProxy.Gload.GetConfig().then(function(o){
-            //判断是否需要登陆
+            appParamter=o;
             const { dispatch } = navigation;
             resetAction = NavigationActions.reset({
                 index: 0,
