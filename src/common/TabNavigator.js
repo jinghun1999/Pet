@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { TabNavigator, StackNavigator } from 'react-navigation'
 import Icon from 'react-native-vector-icons/FontAwesome';
 import pages from '../pages'
+import gestHome from "../pages/gest/home";
 
 //主菜单
 const TabNavigation = TabNavigator({
@@ -12,6 +13,15 @@ const TabNavigation = TabNavigator({
             headerTitle:'首页',
             tabBarLabel:'首页',
             tabBarIcon: ({tintColor}) => (<Icon name='home' color={tintColor} size={24}/>)
+        }
+    },
+    Gest:{
+        screen: pages.gestHome,
+        navigationOptions:{
+            headerVisible:true,
+            headerTitle:'会员',
+            tabBarLabel:'会员',
+            tabBarIcon: ({tintColor}) => (<Icon name='users' color={tintColor} size={24}/>)
         }
     },
     Mine: {

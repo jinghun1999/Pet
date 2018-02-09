@@ -1,5 +1,5 @@
 import {observable, action, useStrict} from 'mobx'
-import Base from './base'
+import Base from './base/base'
 
 useStrict(true);
 class WelcomeStore extends Base{

@@ -31,6 +31,12 @@ const loginStyle = StyleCustom.create({
     }
 });
 
+const gestHomeStyle = StyleCustom.create({
+    container:{
+        flex:1
+    }
+});
+
 const inputBaseStyle=StyleCustom.create({
     rightPadding:{
         paddingRight:28
@@ -57,4 +63,4 @@ const inputBaseStyle=StyleCustom.create({
     }
 });
 
-export default {homeStyle,welcomeStyle,loginStyle,inputBaseStyle}
+export default {homeStyle,welcomeStyle,loginStyle,inputBaseStyle,gestHomeStyle}

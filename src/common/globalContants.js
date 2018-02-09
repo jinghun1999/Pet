@@ -4,7 +4,7 @@ import proxy from './requestProxy';
 import extend from './extend';
 import _ from "lodash";
 import publicStyle from '../styles/public';
-import user from '../stores/login'
+import user from '../stores/user/login'
 import appParamter from './sysParamter'
 
 import symbols from 'es6-symbol'

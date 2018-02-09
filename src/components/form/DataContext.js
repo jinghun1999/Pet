@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Form} from 'native-base';
 import {InputBase} from './native-base-validate'
-import StoreBase from "../../stores/base";
+import StoreBase from "../../stores/base/base";
 import {observer, inject} from 'mobx-react/native';
 
 export default class DataContext extends Component{

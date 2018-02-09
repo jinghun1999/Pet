@@ -1,5 +1,5 @@
 import {observable, computed, action, runInAction, useStrict} from 'mobx'
-import Base from './base'
+import Base from '../base/base'
 import { persist } from 'mobx-persist'
 
 const Buffer = require('buffer').Buffer

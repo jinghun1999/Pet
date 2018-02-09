@@ -1,9 +1,9 @@
 import {observable,action,computed, runInAction, useStrict} from 'mobx'
-import Base from './base'
+import Base from '../base/base'
 import { create,persist } from 'mobx-persist'
 import validate from "mobx-form-validate";
 import _ from "lodash";
-import {hydrate} from '../common'
+import {hydrate} from '../../common/index'
 import { NavigationActions } from 'react-navigation'
 
 useStrict(true);

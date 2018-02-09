@@ -27,7 +27,7 @@ export default class Login extends Base{
                     //在重新获取用户配置信息的基础之上，打开主页
                     serviceProxy.Gload.GetConfig().then(function(o){
                         appParamter=o;
-                        const { dispatch } = navigation;
+                        const { dispatch } = this.props.navigation;
                         resetAction = NavigationActions.reset({
                             index: 0,
                             actions: [

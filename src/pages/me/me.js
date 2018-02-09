@@ -3,7 +3,7 @@ import {
     Text,
     View
 } from 'react-native';
-import Base from './base'
+import Base from '../base'
 import {Icon} from 'native-base';
 
 export default class Me extends Base{

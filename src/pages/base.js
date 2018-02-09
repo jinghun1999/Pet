@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import StoreBase from '../stores/base'
+import StoreBase from '../stores/base/base'
 
 export default class PageBase extends Component{
     constructor(props){
