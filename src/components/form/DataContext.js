@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Form} from 'native-base';
-import {InputBase} from './native-base-validate'
+import {InputBase} from './index'
 import StoreBase from "../../stores/base/base";
 import {observer, inject} from 'mobx-react/native';
 

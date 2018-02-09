@@ -7,6 +7,7 @@ import ValidateInputDate from './validateInputDate'
 import ReadOnlyInput from './readOnlyInput'
 import ValidateChooseItem from './validateChooseItem'
 import ValidateRadioInput from './validateRadioInput'
+import InputQuery from './inputQuery'
 import FootBar from './footBar'
 
-export { InputBase,InputText,IconInputText,ValidateInputInt,ValidateInputDate,ReadOnlyInput,ValidateChooseItem,ValidateRadioInput,FootBar }
+export { InputBase,InputText,IconInputText,ValidateInputInt,ValidateInputDate,ReadOnlyInput,ValidateChooseItem,ValidateRadioInput,InputQuery,FootBar }

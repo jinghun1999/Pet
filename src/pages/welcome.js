@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import Base from './base'
 import {observer, inject} from 'mobx-react/native';
-import {InputText} from '../components/form/native-base-validate'
+import {InputText} from '../components/form/index'
 import Form from '../components/form/DataContext'
 import {NavigationActions} from "react-navigation";
 

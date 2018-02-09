@@ -41,6 +41,11 @@ const inputBaseStyle=StyleCustom.create({
     rightPadding:{
         paddingRight:28
     },
+
+    borderItem:{
+        borderWidth:1,
+    },
+
     ico:{
         width:28,
         color:'#b1b1b1',

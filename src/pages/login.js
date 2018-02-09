@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Base from './base'
 import {observer, inject} from 'mobx-react/native';
-import {IconInputText,FootBar} from '../components/form/native-base-validate'
+import {IconInputText,FootBar} from '../components/form'
 import Form from '../components/form/DataContext'
 import { Container,Content,Button,Card,Text,Icon} from 'native-base';
 import {Logo} from '../components'
