@@ -104,6 +104,13 @@ const request = {
         }
 
         return new Promise(function (resolve, reject) {
+            let successCallback = (result) => {
+                resolve(result)//成功调用
+            };
+            let errorCallback = (error) => {
+                reject(error)//异常调用
+            };
+
             fetch(url, {
                 method: 'POST',
                 headers,
@@ -126,25 +133,6 @@ const request = {
             }).catch((error)=>{
                 errorCallback({status:9996 , mess:'网络请求失败'});
             }).done();
-
-            // fetch(url, {
-            //     method: 'POST',
-            //     headers,
-            //     body
-            // }).then((response) => type == 'text' ? response.text() : response.json())
-            //     .then((responseData) => {
-            //         if (responseData.Sign) {
-            //             resolve(responseData.Message)
-            //         } else {
-            //             if(!responseData.Exception){
-            //                 reject("请求异常");
-            //             }else{
-            //                 reject(responseData.Exception);
-            //             }
-            //         }
-            //     }).catch((error) => {
-            //         reject(error);
-            // }).done();
         })
     },
 };

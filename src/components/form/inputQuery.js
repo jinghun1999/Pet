@@ -30,7 +30,7 @@ export default class InputQuery extends InputBase{
                         <Input placeholder={placeholder} value={store.data[name]} placeholderTextColor='#b1b1b1' onChangeText={txt => onChanged(name,txt)} />
                         <Button iconLeft style={{alignSelf:'center'}}>
                             <Icon name='ios-qr-scanner' />
-                            <Text>1{label}</Text>
+                            <Text>{label}</Text>
                         </Button>
                     </Item>
             )
