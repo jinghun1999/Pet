@@ -16,9 +16,11 @@ export default class InputQuery extends InputBase{
         let {label,name, placeholder,store} = this.props;
         let onChanged = store.onUpdate.bind(store);
         return (<Item>
-            <Input placeholder={placeholder} value={store.data[name]} placeholderTextColor='#b1b1b1' onChangeText={txt => onChanged(name,txt)} />
-            <Button iconLeft style={{alignSelf:'center'}}>
+            <TouchableOpacity  activeOpacity={0.5} style={{alignSelf:'center',backgroundColor:'transparent'}}>
                 <Icon name='ios-qr-scanner' />
+            </TouchableOpacity>
+            <Input placeholder={placeholder} value={store.data[name]} placeholderTextColor='#b1b1b1' onChangeText={txt => onChanged(name,txt)} />
+            <Button style={{alignSelf:'center',marginRight:2}}>
                 <Text>{label}</Text>
             </Button>
         </Item>);

@@ -7,7 +7,7 @@ import {
     TouchableOpacity
 } from 'react-native';
 import {observer, inject} from 'mobx-react/native';
-import {Container,Content,Icon} from 'native-base';
+import {Container,Content,Icon,Button} from 'native-base';
 
 @inject('gestHomeStyle')
 @observer
@@ -56,7 +56,7 @@ export default class GestList extends Component{
     render(){
         let collection = this.props.collection;
         this.style=this.props.gestHomeStyle;
-        return <ScrollView style={{flex:1, paddingVertical:0}}>
+        return <View style={{flex:1}}>
             <FlatList data={collection.list}
                       renderItem={this.renderRow.bind(this)}
                       onEndReachedThreshold={0.5}
@@ -70,6 +70,6 @@ export default class GestList extends Component{
                           return true;
                       }}
                       keyExtractor={(item,key) => key}>
-            </FlatList></ScrollView>
+            </FlatList></View>
     }
 }

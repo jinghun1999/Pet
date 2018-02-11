@@ -81,6 +81,15 @@ Array.prototype.fristOne=function (findIndexHandler) {
     }
     return null;
 }
+//获取数组第一个元素
+Array.prototype.fristOneIndex=function (findIndexHandler) {
+    for( var i=0;i<this.length;i++){
+        if(findIndexHandler && findIndexHandler(this[i])){
+            return i;
+        }
+    }
+    return -1;
+}
 //查找元素集合
 Array.prototype.removeItem=function (findIndexHandler) {
     for( var i=0;i<this.length;i++){
