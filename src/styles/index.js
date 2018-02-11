@@ -34,6 +34,59 @@ const loginStyle = StyleCustom.create({
 const gestHomeStyle = StyleCustom.create({
     container:{
         flex:1
+    },
+
+    gestItem:{
+        height:60,
+        justifyContent:'center',
+        marginLeft:20,
+        marginRight:20
+    },
+
+    FristRow:{
+        height:35,
+        flexDirection:'row',
+        alignItems:'center',
+        justifyContent:'space-between',
+    },
+    FristRowItem:{
+        height:35,
+        flexDirection:'row',
+        alignItems:'center'
+    },
+    FristRowTxt:{
+        color:'#2169D5',
+        fontSize:18
+    },
+    FristRowIcon:{
+        fontSize:21,
+        color:'#BBBBBB',
+        marginLeft:10,
+        marginRight:10,
+    },
+
+
+    secondRow:{
+        height:25,
+        flexDirection:'row',
+        justifyContent:'space-between',
+        alignItems:'center',
+    },
+
+    secondRowItem:{
+        height:22,
+        flexDirection:'row',
+        alignItems:'center'
+    },
+
+    secondRowItemIcon:{
+        color:'#BBBBBB',
+        fontSize:20
+    },
+    secondRowItemText:{
+        color:'#9DC0F5',
+        fontSize:16,
+        marginLeft:5
     }
 });
 

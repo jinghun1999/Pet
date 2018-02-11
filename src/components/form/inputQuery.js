@@ -15,25 +15,12 @@ export default class InputQuery extends InputBase{
     render(){
         let {label,name, placeholder,store} = this.props;
         let onChanged = store.onUpdate.bind(store);
-        if(store.submited && validateHepler.getMess(store.data,name)){
-            return (
-                <Item error fixedLabel>
-                    <Input placeholder={placeholder} value={store.data[name]} placeholderTextColor='#b1b1b1' onChangeText={txt => onChanged(name,txt)} />
-                    <Icon name='ios-qr-scanner' />
-                    <Label>{label}</Label>
-                    <Icon name='close-circle' />
-                </Item>
-            )
-        }else {
-            return (
-                    <Item>
-                        <Input placeholder={placeholder} value={store.data[name]} placeholderTextColor='#b1b1b1' onChangeText={txt => onChanged(name,txt)} />
-                        <Button iconLeft style={{alignSelf:'center'}}>
-                            <Icon name='ios-qr-scanner' />
-                            <Text>{label}</Text>
-                        </Button>
-                    </Item>
-            )
-        }
+        return (<Item>
+            <Input placeholder={placeholder} value={store.data[name]} placeholderTextColor='#b1b1b1' onChangeText={txt => onChanged(name,txt)} />
+            <Button iconLeft style={{alignSelf:'center'}}>
+                <Icon name='ios-qr-scanner' />
+                <Text>{label}</Text>
+            </Button>
+        </Item>);
     }
 }

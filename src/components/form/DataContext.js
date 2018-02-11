@@ -23,6 +23,7 @@ export default class DataContext extends Component{
     }
     render() {
         let {children,store} = this.props;
+        let style = this.props.style;
         var childrenWithProps = React.Children.map(children, child =>{
             //若 child 继承至 InputBase
             if(child.type && child.type.prototype && child.__proto__.isPrototypeOf(InputBase)){
@@ -32,7 +33,7 @@ export default class DataContext extends Component{
             }
         });
         return (
-            <Form>
+            <Form style={style}>
                 {childrenWithProps}
             </Form>
         )
