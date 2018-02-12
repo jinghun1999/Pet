@@ -12,9 +12,6 @@ class UserStore extends Base{
     @persist @observable token = {}
 
     @action fill(r){
-
-        debugger;
-
         //暂时这样，以后改成从后台填充
         //1、验证
         if(!r || !r.Mobile || !r.HospitalId || !r.Hospitals || r.Hospitals.length==0){

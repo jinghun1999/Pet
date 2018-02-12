@@ -68,7 +68,6 @@ class LoginStore extends Base{
             timeOutHandler();//已经过期
             return;
         }
-
         let timeout = this.token.timeout.ToDateTime();
         let now = new Date();
         if(timeout < now){

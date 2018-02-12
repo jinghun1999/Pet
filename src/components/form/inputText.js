@@ -15,13 +15,7 @@ export default class InputText extends InputBase{
     render(){
 
         let {label,name, placeholder,store} = this.props;
-
-        debugger;
-
         let onChanged = store.onUpdate.bind(store);
-
-        debugger;
-
         if(store.submited && validateHepler.getMess(store.data,name)){
             return (
                 <Item error fixedLabel>
