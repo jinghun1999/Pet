@@ -41,27 +41,22 @@ class LoginStore extends Base{
             type:this.data.type
         }).then(
             data=>{
-                _.debounce((r)=>{
-                    let action = ()=>{
-                        this.token = observable(data.Token);
-                    };
-                    runInAction(action.bind(this));
-                    if(sucessCallBack){
-                        sucessCallBack();
-                    }
-                }, 400)
+                this.fill(data,sucessCallBack);
             },err=>{
                 if(errCallBack){
                     errCallBack(err);
                 }
             });
     }
-    // @action fill = _.debounce((r)=>{
-    //     let action = ()=>{
-    //         this.token = observable(r.Token);
-    //     };
-    //     runInAction(action.bind(this));
-    // }, 400)
+    @action fill = _.debounce((r,callback)=>{
+        let action = ()=>{
+            this.token = observable(r.Token);
+        };
+        runInAction(action.bind(this));
+        if(callback){
+            callback();
+        }
+    }, 400)
     @action onLoadLocal=(callback)=>{
         hydrate('LoginStore', this).then(o=>callback(this));
     }
@@ -74,9 +69,6 @@ class LoginStore extends Base{
             timeOutHandler();//已经过期
             return;
         }
-
-        debugger;
-
         let timeout = this.token.timeout.ToDateTime();
         let now = new Date();
         if(timeout < now){

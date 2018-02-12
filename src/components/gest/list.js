@@ -14,13 +14,15 @@ import {Container,Content,Icon,Button} from 'native-base';
 export default class GestList extends Component{
     constructor(props){
         super(props);
+        this.style=this.props.gestHomeStyle;
     }
     componentDidMount(){
     }
     style={};
     renderRow({item, index}){
+        let {onPress} = this.props;
         return (
-            <TouchableOpacity activeOpacity={0.5} style={this.style.gestItem}>
+            <TouchableOpacity activeOpacity={0.5} style={this.style.gestItem} onPress={()=>onPress(item)}>
                 <View style={this.style.FristRow}>
                     <View style={this.style.FristRowItem}>
                         <Text style={this.style.FristRowTxt}>{item.GestName}(15882982712)</Text>
@@ -53,9 +55,10 @@ export default class GestList extends Component{
     _renderFooter(){
         return <View />
     }
+    onPress(item){
+    }
     render(){
-        let collection = this.props.collection;
-        this.style=this.props.gestHomeStyle;
+        let {collection,onPress} = this.props;
         return <View style={{flex:1}}>
             <FlatList data={collection.list}
                       renderItem={this.renderRow.bind(this)}

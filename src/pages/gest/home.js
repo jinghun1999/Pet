@@ -18,34 +18,13 @@ export default class GestHome extends Base{
     constructor(props){
         super(props);
     }
-    renderRow = ({item, index}) =>{
-        return (
-            <TouchableOpacity activeOpacity={0.5} style={this.style.gestItem}>
-                <View style={this.style.FristRow}>
-                    <View style={this.style.FristRowItem}>
-                        <Text style={this.style.FristRowTxt}>{item.GestName}(15882982712)</Text>
-                    </View>
-                    <View style={this.style.FristRowItem}>
-                        <Icon name="logo-yen" style={[this.style.FristRowIcon]} />
-                        <Text style={this.style.FristRowTxt}>20000</Text>
-                    </View>
-                </View>
-                <View style={this.style.secondRow}>
-                    <View style={this.style.secondRowItem}>
-                        <Icon name="ios-paw" style={this.style.secondRowItemIcon} />
-                        <Text style={this.style.secondRowItemText}>5</Text>
-                    </View>
-                    <View style={this.style.secondRowItem}>
-                        <Icon name="ios-ribbon" style={this.style.secondRowItemIcon} />
-                        <Text style={this.style.secondRowItemText}>金卡</Text>
-                    </View>
-                    <View style={this.style.secondRowItem}>
-                        <Icon name="ios-cash" style={this.style.secondRowItemIcon} />
-                        <Text style={this.style.secondRowItemText}>5</Text>
-                    </View>
-                </View>
-            </TouchableOpacity>
-        );
+    onGestItemPress(item){
+
+
+        const { navigation } = this.props;
+        navigation.navigate('GestDetail',{ id:item.ID });
+
+
     }
     render(){
         list=this.store.data.list;
@@ -55,7 +34,7 @@ export default class GestHome extends Base{
             <Content>
                 <Form store={this.store}>
                     <InputQuery label="查询" placeholder="会员编号/名称/手机" name="qr"></InputQuery>
-                    <GestList collection={list} />
+                    <GestList collection={list} onPress={this.onGestItemPress.bind(this)} />
                 </Form>
             </Content>
         </Container>);
