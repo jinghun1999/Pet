@@ -5,5 +5,6 @@ import QuickMenus from './home/quickMenus'
 import GestList from './gest/list'
 import SortBar from './gest/sortBar'
 import SimpleGest from './gest/simple'
+import PetCard from './gest/petCard'
 
-export {Logo,SwiperBanner,Summary,QuickMenus,GestList,SortBar,SimpleGest}
+export {Logo,SwiperBanner,Summary,QuickMenus,GestList,SortBar,SimpleGest,PetCard}
