@@ -29,7 +29,7 @@ export default class SimpleGest extends Component{
                 </View>
             </View>
             <TouchableOpacity style={style.actionsView}>
-                <Icon name="ios-list" style={style.costIcon} />
+                <Icon name="ios-paper-outline" style={style.costIcon} />
             </TouchableOpacity>
         </View>
     }

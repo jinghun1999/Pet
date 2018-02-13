@@ -12,6 +12,9 @@ class ReadOnlyInput extends InputBase{
     }
     render(){
         let {label,value} = this.props;
+        if(value != null && value != undefined){
+            value=value.toString();
+        }
         return (
             <Item fixedLabel style={this.style.rightPadding}>
                 <Label>{label}</Label>
