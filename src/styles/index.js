@@ -94,17 +94,61 @@ const gestSimpleStyle = StyleCustom.create({
     body:{
         flexDirection:'row',
         justifyContent:'space-between',
-        alignItems:'stretch'
+        alignItems:'stretch',
+        height:80,
+        backgroundColor:'#F4F5F2'
+    },
+    sexView:{
+        width:80,
+        justifyContent:'center',
+        alignItems:'center'
     },
     sex:{
-        width:150
+        fontSize:45,
+        color:'#2169D5'
+    },
+    nameView:{
+        flex:1,
     },
     name:{
-        flex:1
+        justifyContent:'center',
+        flex:1,
     },
-    actions:{
-        width:200,
-        justifyContent:'center'
+    nameTxt:{
+        fontSize:25,
+        color:'#2169D5',
+    },
+    phone:{
+        flex:1,
+        flexDirection:'row',
+        justifyContent:'flex-start',
+        alignItems:'center'
+    },
+
+    phoneIcon:{
+        fontSize:25,
+        color:'#2169D5',
+        marginLeft:2,
+        marginRight:2
+    },
+
+    phoneTxt:{
+        fontSize:18,
+        color:'#808069',
+    },
+
+    actionsView:{
+        width:80,
+        justifyContent:'center',
+        alignItems:'center'
+    },
+    costTxt:{
+        fontSize:12,
+        color:'#808069',
+    },
+    costIcon:{
+        fontSize:50,
+        color:'#2169D5',
     }
 });
 

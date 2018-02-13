@@ -6,7 +6,7 @@ import {observer, inject} from 'mobx-react/native';
 import Base from '../base'
 import {Container,Content,Icon,Segment,Button,Text} from 'native-base';
 import Form from '../../components/form/DataContext'
-import {GestList,SortBar} from '../../components'
+import {GestList,SortBar,SimpleGest} from '../../components'
 import gestDetailStore from "../../stores/gest/gestDetail";
 
 @observer
@@ -20,8 +20,8 @@ export default class Detail extends Base{
     render(){
         return (<Container>
             <Content>
+                <SimpleGest></SimpleGest>
                 <Form store={this.store}>
-
                 </Form>
             </Content>
         </Container>);
