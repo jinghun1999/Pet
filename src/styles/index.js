@@ -90,6 +90,24 @@ const gestHomeStyle = StyleCustom.create({
     }
 });
 
+const gestSimpleStyle = StyleCustom.create({
+    body:{
+        flexDirection:'row',
+        justifyContent:'space-between',
+        alignItems:'stretch'
+    },
+    sex:{
+        width:150
+    },
+    name:{
+        flex:1
+    },
+    actions:{
+        width:200,
+        justifyContent:'center'
+    }
+});
+
 const inputBaseStyle=StyleCustom.create({
     rightPadding:{
         paddingRight:28
@@ -121,4 +139,4 @@ const inputBaseStyle=StyleCustom.create({
     }
 });
 
-export default {homeStyle,welcomeStyle,loginStyle,inputBaseStyle,gestHomeStyle}
+export default {homeStyle,welcomeStyle,loginStyle,inputBaseStyle,gestHomeStyle,gestSimpleStyle}
