@@ -6,5 +6,6 @@ import GestList from './gest/list'
 import SortBar from './gest/sortBar'
 import SimpleGest from './gest/simple'
 import PetCard from './gest/petCard'
+import LeftLabel from './common/leftLabel'
 
-export {Logo,SwiperBanner,Summary,QuickMenus,GestList,SortBar,SimpleGest,PetCard}
+export {Logo,SwiperBanner,Summary,QuickMenus,GestList,SortBar,SimpleGest,PetCard,LeftLabel}

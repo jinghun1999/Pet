@@ -16,7 +16,17 @@ class gestDetailStore extends Base {
         IsVIP:'是',
         VIPAccount:2009,
         PrepayMoney:2590,
-        LevelName:'金卡'
+        LevelName:'金卡',
     }
+    pets=[{
+        ID:'',
+        PetCode:'',
+        PetName:'',
+        PetSex:'',
+        PetBirthday:'2017-01-01',
+        Age:2,
+        PetSkinColor:'#202911',
+        PetBreed:''
+    }]
 }
 export default new gestDetailStore();

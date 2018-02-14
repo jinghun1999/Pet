@@ -8,7 +8,7 @@ import {Container,Content,Icon,Segment,Button,Text,ListItem} from 'native-base';
 import Form from '../../components/form/DataContext'
 import {ReadOnlyInput} from '../../components/form'
 
-import {GestList,SortBar,SimpleGest} from '../../components'
+import {GestList,SortBar,SimpleGest,PetCard} from '../../components'
 import gestDetailStore from "../../stores/gest/gestDetail";
 
 @observer
@@ -40,6 +40,9 @@ export default class Detail extends Base{
                     <ListItem itemDivider>
                         <Text>宠物信息</Text>
                     </ListItem>
+                    {
+                        this.store.pets.map((item,index)=><PetCard key={index} pet={item}></PetCard>)
+                    }
                 </Form>
             </Content>
         </Container>);

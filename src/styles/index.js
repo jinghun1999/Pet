@@ -152,6 +152,46 @@ const gestSimpleStyle = StyleCustom.create({
     }
 });
 
+const petCardStyle = StyleCustom.create({
+    body:{
+        flex:1,
+        flexDirection:"row",
+        height:120,
+        alignItems:'stretch',
+        backgroundColor:'white',
+        borderWidth:1,
+        borderColor:'#BBBBBB'
+    },
+    imageView:{
+        width:120,
+        justifyContent:'center',
+        alignItems:'center'
+    },
+    image:{
+        maxWidth:120,
+        maxHeight:120
+    },
+    info:{
+        flex:1,
+    },
+    row:{
+        flex:1,
+        flexDirection:'row',
+        justifyContent:'space-between',
+        alignItems:'center'
+    },
+    name:{
+        fontSize:21,
+        color:'#101010',
+        marginLeft:10
+    },
+    breed:{
+        fontSize:16,
+        color:'#ABABAB',
+        marginRight:10
+    }
+});
+
 const inputBaseStyle=StyleCustom.create({
     rightPadding:{
         paddingRight:28
@@ -183,4 +223,4 @@ const inputBaseStyle=StyleCustom.create({
     }
 });
 
-export default {homeStyle,welcomeStyle,loginStyle,inputBaseStyle,gestHomeStyle,gestSimpleStyle}
+export default {homeStyle,welcomeStyle,loginStyle,inputBaseStyle,gestHomeStyle,gestSimpleStyle,petCardStyle}
