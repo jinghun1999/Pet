@@ -27,6 +27,24 @@ class gestDetailStore extends Base {
         Age:2,
         PetSkinColor:'#202911',
         PetBreed:''
+    },{
+        ID:'',
+        PetCode:'',
+        PetName:'',
+        PetSex:'',
+        PetBirthday:'2017-01-01',
+        Age:2,
+        PetSkinColor:'#202911',
+        PetBreed:''
+    },{
+        ID:'',
+        PetCode:'',
+        PetName:'',
+        PetSex:'',
+        PetBirthday:'2017-01-01',
+        Age:2,
+        PetSkinColor:'#202911',
+        PetBreed:''
     }]
 }
 export default new gestDetailStore();

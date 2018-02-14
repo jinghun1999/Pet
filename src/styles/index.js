@@ -158,8 +158,7 @@ const petCardStyle = StyleCustom.create({
         flexDirection:"row",
         height:120,
         alignItems:'stretch',
-        backgroundColor:'white',
-        borderWidth:1,
+        borderTopWidth:1,
         borderColor:'#BBBBBB'
     },
     imageView:{
