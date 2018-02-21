@@ -33,7 +33,7 @@ export default class Detail extends Base{
             <Content>
                 <SimpleGest></SimpleGest>
                 <Card store={this.store}>
-                    <CardHead label="会员信息" />
+                    <CardHead label="会员信息" border={true} />
                     <CardItem label="性别：" name="GestSex" />
                     <CardItem label="生日：" name="GestBirthday" />
                     <CardItem label="邮件：" name="EMail" />

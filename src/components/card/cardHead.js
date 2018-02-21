@@ -7,9 +7,9 @@ class ExtensionCardHead extends ItemBase{
         super(props);
     }
     render(){
-        let {label,onPress,...props} = this.props;
+        let {label,border,onPress,...props} = this.props;
         return (
-            <CardItem header {...props} style={{ borderBottomWidth:1,borderColor:'#BBBBBB' }}>
+            <CardItem header {...props} style={border?{borderBottomWidth:1,borderColor:'#BBBBBB'}:{}}>
                 <Text>{label}</Text>
             </CardItem>
         )
