@@ -95,61 +95,39 @@ const gestSimpleStyle = StyleCustom.create({
         flexDirection:'row',
         justifyContent:'space-between',
         alignItems:'stretch',
-        height:80,
+        height:50,
         backgroundColor:'#F4F5F2'
     },
-    sexView:{
-        width:80,
-        justifyContent:'center',
-        alignItems:'center'
-    },
+    // sexView:{
+    //     width:80,
+    //     justifyContent:'center',
+    //     alignItems:'center'
+    // },
     sex:{
         fontSize:45,
-        color:'#2169D5'
-    },
-    nameView:{
-        flex:1,
-    },
-    name:{
+        color:'#2169D5',
         justifyContent:'center',
+        alignItems:'center',
+        textAlign:'center',
+        marginRight:15,
+        marginLeft:15
+    },
+
+    txtView:{
         flex:1,
+        justifyContent:'center',
     },
     nameTxt:{
         fontSize:25,
         color:'#2169D5',
+        textAlign:'center',
     },
-    phone:{
-        flex:1,
-        flexDirection:'row',
-        justifyContent:'flex-start',
-        alignItems:'center'
-    },
-
-    phoneIcon:{
-        fontSize:25,
-        color:'#2169D5',
-        marginLeft:2,
-        marginRight:2
-    },
-
     phoneTxt:{
         fontSize:18,
         color:'#808069',
+        textAlign:'right',
+        marginRight:15
     },
-
-    actionsView:{
-        width:80,
-        justifyContent:'center',
-        alignItems:'center'
-    },
-    costTxt:{
-        fontSize:12,
-        color:'#808069',
-    },
-    costIcon:{
-        fontSize:50,
-        color:'#2169D5',
-    }
 });
 
 const petCardStyle = StyleCustom.create({
@@ -164,7 +142,8 @@ const petCardStyle = StyleCustom.create({
     imageView:{
         width:120,
         justifyContent:'center',
-        alignItems:'center'
+        alignItems:'center',
+        marginLeft:5
     },
     image:{
         maxWidth:120,

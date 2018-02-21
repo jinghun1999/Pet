@@ -1,13 +1,11 @@
 import React, {Component} from 'react';
 import {
-    Text,
     View,
     TouchableOpacity
 } from 'react-native';
 import {inject} from "mobx-react/native";
-import {Icon} from 'native-base';
+import {Card,CardItem,Left,Right,Body,Text,H2, Icon} from 'native-base';
 
-@inject('gestSimpleStyle')
 export default class SimpleGest extends Component{
     constructor(props){
         super(props);
@@ -15,22 +13,19 @@ export default class SimpleGest extends Component{
     componentDidMount(){
     }
     render(){
-        let style = this.props.gestSimpleStyle;
-        return <View style={[style.body]}>
-            <View style={style.sexView}>
-                <TouchableOpacity>
-                    <Icon name="ios-call" style={style.sex}></Icon>
-                </TouchableOpacity>
-            </View>
-            <View style={style.nameView}>
-                <View style={style.name}><Text style={style.nameTxt}>汤姆</Text></View>
-                <View style={style.phone}>
-                    <Text style={style.phoneTxt}>182829383828</Text>
-                </View>
-            </View>
-            <TouchableOpacity style={style.actionsView}>
-                <Icon name="ios-paper-outline" style={style.costIcon} />
-            </TouchableOpacity>
-        </View>
+        return <Card>
+            <CardItem>
+                <Left>
+                    <Icon name="ios-person"></Icon>
+                    <Body>
+                        <H2>汤姆</H2>
+                        <Text note>1838272626652</Text>
+                    </Body>
+                </Left>
+                <Right>
+                        <Text note>金卡</Text>
+                </Right>
+            </CardItem>
+        </Card>
     }
 }
