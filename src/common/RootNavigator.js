@@ -21,7 +21,8 @@ const RootNavigator = StackNavigator({
     Login:{screen:pages.login},
     Main:{screen: body},
     GestDetail:{screen:pages.gestDetail},
-    Balance:{screen:pages.balance}
+    Balance:{screen:pages.balance},
+    Payment:{screen:pages.payment}
 }, {
     initialRouteName: 'Welcome', // 默认显示界面!global.user.loginState?'Login':'Main'
     navigationOptions: {// 屏幕导航的默认选项, 也可以在组件内用 static navigationOptions 设置(会覆盖此处的设置)

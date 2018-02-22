@@ -5,6 +5,7 @@ import me from './me/me'
 import gestHome from './gest/home'
 import gestDetail from './gest/detail'
 import balance from './gest/balance'
+import payment from './gest/payment'
 
 export default {
     homePage,
@@ -13,5 +14,6 @@ export default {
     login,
     gestHome,
     gestDetail,
-    balance
+    balance,
+    payment
 }

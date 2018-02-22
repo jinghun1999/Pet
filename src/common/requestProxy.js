@@ -23,7 +23,8 @@ class WebApiProxy {
     }
     Gest = {
         GetPages:params=>this.do(serverAddress,"Api/Gest/GetPageRecord",RequestType.Post,params),
-        GetMoneyRecord:params=>this.do(serverAddress,"Api/Report/GetMoneyRecord",RequestType.Get,params)
+        GetMoneyRecord:params=>this.do(serverAddress,"Api/Report/GetMoneyRecord",RequestType.Get,params),
+        GetPrePayRecord:params=>this.do(serverAddress,"Api/Report/GetPrePayRecord",RequestType.Get,params)
     }
     Gload = {
         GetConfig:()=>this.do(serverAddress,"Api/Persons/GetUserConfig",RequestType.Get),
