@@ -8,5 +8,6 @@ import SimpleGest from './gest/simple'
 import PetCard from './gest/petCard'
 import LeftLabel from './common/leftLabel'
 import FootBar from './common/footBar'
+import BalanceList from './gest/balanceList'
 
-export {Logo,SwiperBanner,Summary,QuickMenus,GestList,SortBar,SimpleGest,PetCard,LeftLabel,FootBar}
+export {Logo,SwiperBanner,Summary,QuickMenus,GestList,SortBar,SimpleGest,PetCard,LeftLabel,FootBar,BalanceList}

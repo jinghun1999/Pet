@@ -19,12 +19,8 @@ export default class GestHome extends Base{
         super(props);
     }
     onGestItemPress(item){
-
-
         const { navigation } = this.props;
         navigation.navigate('GestDetail',{ id:item.ID });
-
-
     }
     render(){
         list=this.store.data.list;

@@ -201,4 +201,25 @@ const inputBaseStyle=StyleCustom.create({
     }
 });
 
-export default {homeStyle,welcomeStyle,loginStyle,inputBaseStyle,gestHomeStyle,gestSimpleStyle,petCardStyle}
+const balanceStyle=StyleCustom.create({
+    listRow:{
+        height:60,
+        justifyContent:'center',
+        marginLeft:20,
+        marginRight:20,
+    },
+    fristRow:{
+        height:30,
+        flexDirection:'row',
+        justifyContent:'space-between',
+        alignItems:'flex-end'
+    },
+    secondRow:{
+        height:30,
+        flexDirection:'row',
+        justifyContent:'space-between',
+        alignItems:'flex-start'
+    }
+});
+
+export default {homeStyle,welcomeStyle,loginStyle,inputBaseStyle,gestHomeStyle,gestSimpleStyle,petCardStyle,balanceStyle}

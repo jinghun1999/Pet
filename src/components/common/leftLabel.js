@@ -35,8 +35,8 @@ export default class LeftLabel extends Component{
         }
 
         return <View style={[{flex:1,flexDirection:'row',alignItems:'center'},...style]}>
-            <Text style={[{textAlign:'right',color:'#ABABAB',fontSize:18},...labelStyle]}>{label}</Text>
-            <Text style={[{textAlign:'left',color:'#101010',fontSize:20},...txtStyle]}>{txt}</Text>
+            <Text style={[{textAlign:'right',color:'#ABABAB'},...labelStyle]}>{label}</Text>
+            <Text style={[{textAlign:'left',color:'#101010'},...txtStyle]}>{txt}</Text>
         </View>;
     }
 }
