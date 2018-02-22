@@ -54,7 +54,7 @@ export default class BalanceList extends Component{
                       ListEmptyComponent={()=><View style={{height:100, justifyContent:'center', alignItems:'center'}}><Text style={{color:'gray'}}>暂无余额明细</Text></View>}
                       refreshing={this.props.collection.ladding}
                       onRefresh={()=>{
-
+                          this.props.collection.onIni();
                       }}
                       onEndReached={()=>{
                           this.props.collection.onQuery();
