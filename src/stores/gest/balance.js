@@ -17,7 +17,7 @@ class BalanceCollection{
         this.pageIndex=1;
         this.end=false;
         this.ladding=false;
-        this.list=[];
+        //this.list=[];
         this.onQuery();
     }
     //提交查询
@@ -36,6 +36,7 @@ class BalanceCollection{
             });
         };
         let failed=e=>{
+
             runInAction(()=>{
                 this.ladding=false;
             });
