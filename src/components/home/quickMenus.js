@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {
     View,
     Text,
+    TouchableOpacity,
     StyleSheet
 } from 'react-native';
 import {inject, observer} from 'mobx-react/native';
@@ -19,7 +20,9 @@ export default class QuickMenus extends Component
     },{
         iconName:'ios-person-add',
         title:'增加会员',
-        onHandler:()=>{}
+        onHandler:()=>{
+
+        }
     },{
         iconName:'ios-card',
         title:'会员充值',
@@ -66,13 +69,13 @@ export default class QuickMenus extends Component
 
     renderBar(item,key){
         if(!item.iconName){
-            return (<View style={[styles.barMenu]} key={key}>
-            </View>);
+            return (<TouchableOpacity style={[styles.barMenu]} key={key}>
+            </TouchableOpacity>);
         }else{
-            return (<View style={[styles.barMenu]} key={key}>
+            return (<TouchableOpacity style={[styles.barMenu]} key={key} onPress={item.onHandler}>
                 <Icon name={item.iconName} style={styles.barIcon}></Icon>
                 <Text style={styles.barText}>{item.title}</Text>
-            </View>);
+            </TouchableOpacity>);
         }
     }
 
