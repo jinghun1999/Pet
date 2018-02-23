@@ -9,6 +9,6 @@ import ValidateChooseItem from './validateChooseItem'
 import ValidateRadioInput from './validateRadioInput'
 import InputQuery from './inputQuery'
 import FootBar from './footBar'
-import DataContext from './DataContext'
+import From from './DataContext'
 
-export { DataContext,InputBase,InputText,IconInputText,ValidateInputInt,ValidateInputDate,ReadOnlyInput,ValidateChooseItem,ValidateRadioInput,InputQuery,FootBar }
+export {From,InputBase,InputText,IconInputText,ValidateInputInt,ValidateInputDate,ReadOnlyInput,ValidateChooseItem,ValidateRadioInput,InputQuery,FootBar}

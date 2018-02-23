@@ -23,7 +23,7 @@ export default class Home extends Base{
         return (<View style={this.style.container}>
             <SwiperBanner items={this.advs} height={145} barHeight={25}></SwiperBanner>
             <Summary></Summary>
-            <QuickMenus></QuickMenus>
+            <QuickMenus navigation={this.props.navigation}></QuickMenus>
         </View>);
     }
 }

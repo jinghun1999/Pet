@@ -4,8 +4,7 @@ import pages from '../pages';
 import body from './TabNavigator'
 import Icon from 'react-native-vector-icons/FontAwesome';
 import CardStackStyleInterpolator from 'react-navigation/src/views/CardStack/CardStackStyleInterpolator';
-import balance from "../pages/gest/balance";
-import spend from "../pages/gest/spend";
+import gestAdd from "../pages/gest/add";
 
 const TransitionConfiguration = () => ({
     screenInterpolator: (sceneProps) => {
@@ -24,7 +23,8 @@ const RootNavigator = StackNavigator({
     GestDetail:{screen:pages.gestDetail},
     Balance:{screen:pages.balance},
     Payment:{screen:pages.payment},
-    Spend:{screen:pages.spend}
+    Spend:{screen:pages.spend},
+    GestAdd:{screen:pages.gestAdd}
 }, {
     initialRouteName: 'Welcome', // 默认显示界面!global.user.loginState?'Login':'Main'
     navigationOptions: {// 屏幕导航的默认选项, 也可以在组件内用 static navigationOptions 设置(会覆盖此处的设置)

@@ -21,7 +21,8 @@ export default class QuickMenus extends Component
         iconName:'ios-person-add',
         title:'增加会员',
         onHandler:()=>{
-
+            const { navigation } = this.props;
+            navigation.navigate('GestAdd',{});
         }
     },{
         iconName:'ios-card',

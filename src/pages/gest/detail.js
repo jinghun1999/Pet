@@ -8,7 +8,6 @@ import {Container,Content,Icon,Segment,Button,Text,ListItem} from 'native-base';
 import Card from '../../components/card/dataContext'
 import {CardItem,CardHead,CardFooter} from '../../components/card'
 import {GestList,SortBar,SimpleGest,PetCard,FootBar} from '../../components'
-import gestDetailStore from "../../stores/gest/gestDetail";
 
 @observer
 @inject('gestDetailStore')
