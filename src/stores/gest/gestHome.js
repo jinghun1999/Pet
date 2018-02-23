@@ -9,6 +9,7 @@ class GestCollection{
     @observable ladding=false
     end=false
     pageIndex=1
+    pageSize=25
 
     @observable sortModel=0
 
@@ -30,6 +31,15 @@ class GestCollection{
             this.sortModel=index;
         }
     }
+
+    @action onIni(){
+        this.pageIndex=1;
+        this.end=false;
+        this.ladding=false;
+        this.list=[];
+        this.onQuery();
+    }
+
     //提交查询
     @action onQuery(){
         if( this.ladding || this.end ){
@@ -39,10 +49,10 @@ class GestCollection{
         let succeed=d=>{
             runInAction(()=>{
                 this.ladding=false;
-                this.list.push(d[0]);
-                if(this.list.length>20){
+                if(d.length < this.pageSize){
                     this.end=true;
                 }
+                this.list.push(...d);
             });
         };
         let failed=e=>{
@@ -62,7 +72,7 @@ class GestCollection{
         sortItem = this.sortOptions[this.sortModel];
         return {
             index:this.pageIndex,
-            pageSize:25,
+            pageSize:this.pageSize,
             items:[],
             sorts:[{Field:sortItem.Key,Title:sortItem.Title,Sort:{Name:sortItem.Desc?"Desc":"Asc",Title:sortItem.Desc?"降序":"升序"}}]
         }
@@ -75,6 +85,9 @@ class GestHomeStore extends Base {
     @observable data={
         @observable qr:'',
         @observable list:new GestCollection()
+    }
+    @action onIni(){
+        this.data.list.onIni();
     }
 
 }

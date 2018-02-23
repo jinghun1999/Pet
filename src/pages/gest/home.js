@@ -17,6 +17,7 @@ import {GestList,SortBar} from '../../components'
 export default class GestHome extends Base{
     constructor(props){
         super(props);
+        this.store.onIni();
     }
     onGestItemPress(item){
         const { navigation } = this.props;

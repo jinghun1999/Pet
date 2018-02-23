@@ -68,6 +68,9 @@ export default class GestList extends Component{
                       ListFooterComponent={this._renderFooter}
                       ListEmptyComponent={()=><View style={{height:100, justifyContent:'center', alignItems:'center'}}><Text style={{color:'gray'}}>暂无免疫提醒</Text></View>}
                       refreshing={this.props.collection.ladding}
+                      onRefresh={()=>{
+                          this.props.collection.onIni();
+                      }}
                       onEndReached={()=>{
                           this.props.collection.onQuery();
                           return true;
