@@ -9,7 +9,7 @@ import {
 import {observer, inject} from 'mobx-react/native';
 import {Container,Content,Icon,Button} from 'native-base';
 import LeftLabel from '../common/leftLabel'
-import LeftIcon from '../common/leftIcon'
+import RightIcon from '../common/rightIcon'
 
 @inject('spendStyle')
 @observer
@@ -31,11 +31,11 @@ export default class SpendList extends Component{
                     </View>
                     <View style={this.style.secondRow}>
                         <LeftLabel label="收银:" txt={item.CreatedBy}></LeftLabel>
-                        <LeftIcon icon="ios-cash" txt={item.FactPaidMoney} iconStyle={{fontSize:18}}></LeftIcon>
+                        <RightIcon icon="ios-cash" txt={item.FactPaidMoney} iconStyle={{fontSize:18}}></RightIcon>
                     </View>
                 </View>
                 <View style={this.style.right}>
-                    <Icon name="ios-arrow-forward"></Icon>
+                    <Icon name="ios-arrow-forward" style={this.style.icon}></Icon>
                 </View>
             </TouchableOpacity>
         );

@@ -238,6 +238,10 @@ const spendStyle=StyleCustom.create({
         justifyContent:'center',
         alignItems:'flex-end'
     },
+    icon:{
+        fontSize:18,
+        color:'#ABABAB'
+    },
     fristRow:{
         height:30,
         flexDirection:'row',

@@ -8,9 +8,10 @@ import SimpleGest from './gest/simple'
 import PetCard from './gest/petCard'
 import LeftLabel from './common/leftLabel'
 import LeftIcon from './common/leftIcon'
+import RightIcon from './common/rightIcon'
 import FootBar from './common/footBar'
 import BalanceList from './gest/balanceList'
 import PaymentList from './gest/paymentList'
 import SpendList from './gest/spendList'
 
-export {Logo,SwiperBanner,Summary,QuickMenus,GestList,SortBar,SimpleGest,PetCard,LeftLabel,LeftIcon,FootBar,BalanceList,PaymentList,SpendList}
+export {Logo,SwiperBanner,Summary,QuickMenus,GestList,SortBar,SimpleGest,PetCard,LeftLabel,LeftIcon,RightIcon,FootBar,BalanceList,PaymentList,SpendList}
