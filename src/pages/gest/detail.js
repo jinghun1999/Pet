@@ -39,6 +39,11 @@ export default class Detail extends Base{
         navigation.navigate('Payment',{ id:this.gestId });
     }
 
+    onSpendPress(item){
+        const { navigation } = this.props;
+        navigation.navigate('Spend',{ id:this.gestId });
+    }
+
     render(){
         return (<Container>
             <Content>
@@ -51,7 +56,7 @@ export default class Detail extends Base{
                     <CardItem label="VIP：" name="IsVIP" />
                     <CardItem label="余额：" name="VIPAccount"  onPress={this.onBalancePress.bind(this)} />
                     <CardItem label="预付金：" name="PrepayMoney" onPress={this.onPaymentPress.bind(this)} />
-                    <CardItem label="累计消费：" name="PrepayMoney"  onPress={()=>{}} />
+                    <CardItem label="累计消费：" name="PrepayMoney"  onPress={this.onSpendPress.bind(this)} />
                     <CardFooter label=""></CardFooter>
                 </Card>
                 <Card store={this.store}>

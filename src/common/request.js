@@ -55,7 +55,7 @@ const request = {
                     successCallback(responseData.Message);
                 } else {
                     if(!responseData.Exception){
-                        errorCallback({ status : 9999 , mess : '访问错误' });//未能识别到错误
+                        errorCallback({ status : 9999 , mess : '访问错误：' + JSON.stringify(responseData) });//未能识别到错误
                     }else{
                         errorCallback({ status : 9998 , mess : responseData.Exception });//应用程序抛出的业务错误
                     }

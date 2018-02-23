@@ -6,6 +6,7 @@ import gestHomeStore from './gest/gestHome'
 import gestDetailStore from './gest/gestDetail'
 import balanceStore from './gest/balance'
 import paymentListStore from './gest/payment'
+import spendStore from './gest/spend'
 
 export default {
     homeStore,
@@ -15,5 +16,6 @@ export default {
     gestHomeStore,
     gestDetailStore,
     balanceStore,
-    paymentListStore
+    paymentListStore,
+    spendStore
 }

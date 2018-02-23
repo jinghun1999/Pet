@@ -222,4 +222,34 @@ const balanceStyle=StyleCustom.create({
     }
 });
 
-export default {homeStyle,welcomeStyle,loginStyle,inputBaseStyle,gestHomeStyle,gestSimpleStyle,petCardStyle,balanceStyle}
+const spendStyle=StyleCustom.create({
+    listRow:{
+        height:60,
+        justifyContent:'center',
+        flexDirection:'row',
+        marginLeft:10,
+        marginRight:10,
+    },
+    left:{
+        flex:1,
+    },
+    right:{
+        width:30,
+        justifyContent:'center',
+        alignItems:'flex-end'
+    },
+    fristRow:{
+        height:30,
+        flexDirection:'row',
+        justifyContent:'space-between',
+        alignItems:'flex-end'
+    },
+    secondRow:{
+        height:30,
+        flexDirection:'row',
+        justifyContent:'space-between',
+        alignItems:'flex-start'
+    }
+});
+
+export default {homeStyle,welcomeStyle,loginStyle,inputBaseStyle,gestHomeStyle,gestSimpleStyle,petCardStyle,balanceStyle,spendStyle}

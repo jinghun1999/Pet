@@ -5,7 +5,7 @@ import validate from "mobx-form-validate";
 
 //余额
 useStrict(true);
-class PaymentCollection{
+class SpendCollection{
     @observable list=[]
     @observable ladding=false
     @observable gestId=""
@@ -41,27 +41,28 @@ class PaymentCollection{
             });
         };
         queryObj = this.getQuery();
-        serviceProxy.Gest.GetPrePayRecord(queryObj).then(succeed.bind(this),failed.bind(this));
+        serviceProxy.Gest.GetSpendRecord(queryObj).then(succeed.bind(this),failed.bind(this));
     }
     getQuery(){
         let now = new Date();
         now.setDate(now.getDate()+1);
         return {
-            index:this.pageIndex,
+            pageIndex:this.pageIndex,
             pageSize:this.pageSize,
-            gestID:this.gestId,
-            businessType:-1,//为空表示“消费”、“充值”
-            startDate:'2018-01-01',
-            endDate:now.Format("yyyy-MM-dd")
+            gestId:this.gestId,
+            cashNum:'',
+            cashier:'',
+            from:'2018-01-01',
+            to:now.Format("yyyy-MM-dd")
         }
     }
 }
 
 useStrict(true);
-class PaymentListStore extends Base {
+class SpendStore extends Base {
     //主数据
     @observable data={
-        @observable list:new PaymentCollection()
+        @observable list:new SpendCollection()
     }
     @action onIni(gestId){
         this.data.list.gestId=gestId;
@@ -69,4 +70,4 @@ class PaymentListStore extends Base {
     }
 }
 
-export default new PaymentListStore();
+export default new SpendStore();
