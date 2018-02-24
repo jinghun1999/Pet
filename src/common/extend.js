@@ -100,6 +100,17 @@ Array.prototype.removeItem=function (findIndexHandler) {
     }
     return this;
 }
+Array.prototype.extendMap=function(handler){
+    let result = [];
+    for( var i=0;i<this.length;i++){
+        result.push( handler?handler(this[i]):this[i] );
+    }
+
+    //alert( JSON.stringify(result) )
+
+    return result;
+}
+
 //guid 生成
 class Guid {
     New() {

@@ -16,9 +16,14 @@ class ValidateChooseItem extends InputBase{
         let {label,name, placeholder,store,options,optionslabel,...props} = this.props;
         let onChanged = store.onUpdate.bind(store);
         let onPress =() => {
+            if(options.length==0){
+                return;
+            }
+            let items=[];
+            options.forEach(item => items.push(item));
             ActionSheet.show(
                 {
-                    options: options,
+                    options: items,
                     title: optionslabel,
                     cancelButtonIndex:-1
                 },

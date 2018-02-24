@@ -14,23 +14,41 @@ class AddGestStore extends Base {
         @observable GestAddress:'',
         @observable IsVIP:"",
         @observable GestStyle:'',
-        @observable Remark:''
+        @observable Remark:'',
+        @observable Status:'',
+        @observable RewardPoint:0
     }
+
+    @observable Levels=[]//会员等级
+    @observable GestStatus=[]//会员状态
+    @observable SexTypes=[]//性别
 
     onFailed(exception){
         showToast("检索会员信息失败");
     }
-
-    addConfig:{
-    }
-
     onIni(){
         request.Gest.GetVipAddPageConfig().then(result=>{
-            //showToast( JSON.stringify(result) );
-            //this.data = observable(result.Item);
-            this.addConfig=result;
+            this.onIniSource(result);
         },this.onFailed.bind(this));
     }
+    @action onIniSource(result){
+        this.addConfig=result;
+        this.Levels=result.Levels.map(item=>({
+            text : item.LevelName,
+            value : item.LevelCode
+            }));
+
+        this.GestStatus=result.GestStatus.extendMap(item=>({
+                text : item.value_nameCN,
+                value : item.Code
+            }));
+
+        this.SexTypes=result.SexTypes.extendMap(item=>({
+            text : item.value_nameCN,
+            value : item.Code}));
+    }
+
+
 }
 
 export default new AddGestStore();

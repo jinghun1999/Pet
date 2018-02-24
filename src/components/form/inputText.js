@@ -13,7 +13,6 @@ export default class InputText extends InputBase{
         super(props);
     }
     render(){
-
         let {label,name, placeholder,store} = this.props;
         let onChanged = store.onUpdate.bind(store);
         if(store.submited && validateHepler.getMess(store.data,name)){

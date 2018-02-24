@@ -6,27 +6,29 @@ import {observable,action} from "mobx";
 import InputBase from "./inputBase";
 import validateHepler from "./validateHepler";
 
+@inject('inputBaseStyle')
 @observer
 class ValidateInputInt extends InputBase{
     constructor(props){
         super(props);
     }
     render(){
-        let {label, data , name ,IsValidate, placeholder,onChange,...props} = this.props;
-        let value = data[name];
-        if(IsValidate && validateHepler.getMess(data,name)){
+        let {label,name, placeholder,store} = this.props;
+        let onChanged = store.onUpdate.bind(store);
+        let value = store.data[name];
+        if(store.submited && validateHepler.getMess(store.data,name)){
             return (
-                <Item error fixedLabel {...props}>
+                <Item error fixedLabel>
                     <Label>{label}</Label>
-                    <Input placeholder={placeholder} keyboardType="numeric" value={`${value}`} onChangeText={onChange} placeholderTextColor='#b1b1b1' />
-                    <Icon name='close-circle' />
+                    <Input placeholder={placeholder} value={store.data[name]} placeholderTextColor='#b1b1b1'  onChangeText={txt => onChanged(name,txt)} />
+                    <Icon name='close-circle' style={[this.style.leftMargin]} />
                 </Item>
             )
         }else {
             return (
-                <Item fixedLabel style={this.style.rightPadding} {...props}>
+                <Item fixedLabel style={this.style.rightPadding}>
                     <Label>{label}</Label>
-                    <Input placeholder={placeholder} keyboardType="numeric" value={`${value}`} onChangeText={onChange} placeholderTextColor='#b1b1b1' />
+                    <Input placeholder={placeholder}  keyboardType="numeric" value={`${value}`} placeholderTextColor='#b1b1b1' onChangeText={txt => onChanged(name,txt)} />
                 </Item>
             )
         }
