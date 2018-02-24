@@ -6,19 +6,16 @@ import {observable,action} from "mobx";
 import InputBase from "./inputBase";
 import validateHepler from "./validateHepler";
 
+@inject('inputBaseStyle')
 @observer
 class ValidateChooseItem extends InputBase{
     constructor(props){
         super(props);
     }
     render(){
-        let {label, data , name ,getOptions,selectOptions,optionslabel,IsValidate, placeholder,onChange,...props} = this.props;
-
+        let {label,name, placeholder,store,options,optionslabel,...props} = this.props;
+        let onChanged = store.onUpdate.bind(store);
         let onPress =() => {
-            let options = getOptions?getOptions():[];
-            if(selectOptions){
-                selectOptions.forEach(o=> options.push(o));
-            }
             ActionSheet.show(
                 {
                     options: options,
@@ -27,16 +24,22 @@ class ValidateChooseItem extends InputBase{
                 },
                 (index) => {
                     if( index >= 0 && index < options.length ){
-                        onChange(options[index]);
+                        onChanged(name,options[index].value);
                     }
                 }
             )
         }
-        if(IsValidate && validateHepler.getMess(data,name)){
+        let onGetTxt = (value)=>{
+            let selectedOption = options.fristOne(item=>item.value==value);
+            return selectedOption ? selectedOption.text:'';
+        };
+        let displayText = onGetTxt(store.data[name]);//显示的文本
+
+        if(store.submited && validateHepler.getMess(store.data,name)){
             return (
                 <Item error onPress={onPress} fixedLabel {...props}>
                     <Label>{label}</Label>
-                    <Input editable={false} value={data[name]} placeholder={placeholder} placeholderTextColor='#b1b1b1' />
+                    <Input editable={false} value={displayText} placeholder={placeholder} placeholderTextColor='#b1b1b1' />
                     <Icon style={this.style.ico} active name="ios-arrow-forward" />
                     <Icon name='close-circle' />
                 </Item>
@@ -45,7 +48,7 @@ class ValidateChooseItem extends InputBase{
             return (
                 <Item onPress={onPress} fixedLabel {...props}>
                     <Label>{label}</Label>
-                    <Input editable={false} value={data[name]} placeholder={placeholder} placeholderTextColor='#b1b1b1' />
+                    <Input editable={false} value={displayText} placeholder={placeholder} placeholderTextColor='#b1b1b1' />
                     <Icon style={this.style.ico} active name="ios-arrow-forward" />
                 </Item>
             )
