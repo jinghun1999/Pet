@@ -2,6 +2,10 @@ import pinyin from "./pinyin";
 import uuid from "uuid";
 import {Platform, ToastAndroid} from "react-native";
 
+//浅拷贝
+// Object.prototype.CustomShallowCopy=function (source) {
+// }
+
 //日期扩展
 Date.prototype.InterVal=function (date) {
     var date3=date.getTime()-this.getTime()  //时间差的毫秒数

@@ -16,6 +16,7 @@ class ValidateInputInt extends InputBase{
         let {label,name, placeholder,store} = this.props;
         let onChanged = store.onUpdate.bind(store);
         let value = store.data[name];
+
         if(store.submited && validateHepler.getMess(store.data,name)){
             return (
                 <Item error fixedLabel>

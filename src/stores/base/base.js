@@ -4,9 +4,20 @@ export default class Base {
     customValidateHeader = "validateItem";
 
     @observable submited=false;
+    @action onShallCopy(t,s){
 
-    @action
-    onValidate(){
+        for(let key in s){
+            if( t[key] == undefined ){
+                let o={};
+                o[key] = s[key];
+                extendObservable(t,o);
+            }else{
+                t[key]=s[key];
+            }
+        }
+    }
+    @action onValidate(){
+        alert("1");
         this.submited=true;
         let mess = [];//可以代码自动生成
         //1、自定义

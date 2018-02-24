@@ -1,12 +1,16 @@
-import {observable, computed, action, runInAction, useStrict} from 'mobx'
+import {observable,extendObservable, computed, action, runInAction, useStrict} from 'mobx'
+import validate from 'mobx-form-validate';
 import Base from "../base/fromBase";
 
 useStrict(true);
 class AddGestStore extends Base {
     //主数据
     @observable data={
+        @validate(/\S+$/, '会员编号必填')
         @observable GestCode:'',
+        @validate(/\S+$/, '会员姓名必填')
         @observable GestName:'',
+        @observable RewardPoint:0,
         @observable GestSex:'',
         @observable GestBirthday:'',
         @observable MobilePhone:'',
@@ -16,7 +20,16 @@ class AddGestStore extends Base {
         @observable GestStyle:'',
         @observable Remark:'',
         @observable Status:'',
-        @observable RewardPoint:0
+
+
+        @computed get validateItemGestName(){
+            //1、自定义验证
+            if(this.GestName==null || this.GestName=="") {
+                return "会员姓名必填";//返回错误信息
+            }else{
+                return "";
+            }
+        },
     }
 
     @observable Levels=[]//会员等级
@@ -31,8 +44,13 @@ class AddGestStore extends Base {
             this.onIniSource(result);
         },this.onFailed.bind(this));
     }
+
+
+
     @action onIniSource(result){
         this.addConfig=result;
+        this.onShallCopy(this.data,{...result.Item});
+
         this.Levels=result.Levels.map(item=>({
             text : item.LevelName,
             value : item.LevelCode
@@ -47,8 +65,6 @@ class AddGestStore extends Base {
             text : item.value_nameCN,
             value : item.Code}));
     }
-
-
 }
 
 export default new AddGestStore();

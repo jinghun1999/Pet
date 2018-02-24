@@ -5,6 +5,7 @@ import {
 import {observer, inject} from 'mobx-react/native';
 import Base from '../base'
 import {Container,Content} from 'native-base';
+import {FootBar} from '../../components'
 import {From,InputText,InputTextIcon,InputChoose,InputDate,InputNumber} from '../../components/form'
 import addGestStore from "../../stores/gest/add";
 
@@ -13,6 +14,25 @@ import addGestStore from "../../stores/gest/add";
 export default class Add extends Base{
     constructor(props){
         super(props);
+
+    }
+
+    buttons=[{
+        title:'提交',
+        default:true,
+        style:{flex:1} ,
+        onPress:()=>{
+            debugger;
+            let warings = this.store.onValidate();
+            if(warings && warings.length > 0 ){
+                showToast( warings.join("\r\n"));
+            }
+        }
+    }]
+    componentWillMount(){
+
+    }
+    componentDidMount(){
         this.store.onIni();
     }
     render(){
@@ -32,6 +52,7 @@ export default class Add extends Base{
                     <InputText label="备注" name="Remark" placeholder="请输入备注"></InputText>
                 </From>
             </Content>
+            <FootBar buttons={this.buttons}></FootBar>
         </Container>);
     }
 }
