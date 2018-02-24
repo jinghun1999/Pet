@@ -49,7 +49,7 @@ class ValidateChooseItem extends InputBase{
                 <Item onPress={onPress} fixedLabel {...props}>
                     <Label>{label}</Label>
                     <Input editable={false} value={displayText} placeholder={placeholder} placeholderTextColor='#b1b1b1' />
-                    <Icon style={this.style.ico} active name="ios-arrow-forward" />
+                    <Icon style={[this.style.ico,this.style.leftMargin]} active name="ios-arrow-forward" />
                 </Item>
             )
         }

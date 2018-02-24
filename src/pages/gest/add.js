@@ -5,7 +5,7 @@ import {
 import {observer, inject} from 'mobx-react/native';
 import Base from '../base'
 import {Container,Content} from 'native-base';
-import {From,InputText,InputChoose} from '../../components/form'
+import {From,InputText,InputTextIcon,InputChoose} from '../../components/form'
 import addGestStore from "../../stores/gest/add";
 
 @observer
@@ -23,7 +23,7 @@ export default class Add extends Base{
         return (<Container>
             <Content>
                 <From store={this.store}>
-                    <InputText label="会员号" name="GestCode" placeholder="请输入会员号"></InputText>
+                    <InputTextIcon label="会员号" name="GestCode" placeholder="请输入会员号" icon="ios-qr-scanner"></InputTextIcon>
                     <InputText label="手机" name="MobilePhone" placeholder="请输入手机号"></InputText>
                     <InputText label="姓名" name="GestName" placeholder="请输入姓名"></InputText>
                     <InputChoose label="性别" name="GestSex" optionslabel="选择性别" options={options} placeholder="请输入性别"></InputChoose>

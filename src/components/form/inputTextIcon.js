@@ -8,27 +8,29 @@ import validateHepler from './validateHepler'
 
 @inject('inputBaseStyle')
 @observer
-export default class InputText extends InputBase{
+export default class InputTextIcon extends InputBase{
     constructor(props){
         super(props);
     }
     render(){
 
-        let {label,name, placeholder,store} = this.props;
+        let {label,name,icon,placeholder,store,onPress} = this.props;
         let onChanged = store.onUpdate.bind(store);
         if(store.submited && validateHepler.getMess(store.data,name)){
             return (
                 <Item error fixedLabel>
                     <Label>{label}</Label>
                     <Input placeholder={placeholder} value={store.data[name]} placeholderTextColor='#b1b1b1'  onChangeText={txt => onChanged(name,txt)} />
-                    <Icon name='close-circle' style={[this.style.leftMargin]} />
+                    <Icon style={this.style.tailIcon} active name={icon} />
+                    <Icon name='close-circle' />
                 </Item>
             )
         }else {
             return (
-                <Item fixedLabel style={this.style.rightPadding}>
+                <Item fixedLabel>
                     <Label>{label}</Label>
                     <Input placeholder={placeholder} value={store.data[name]} placeholderTextColor='#b1b1b1' onChangeText={txt => onChanged(name,txt)} />
+                    <Icon style={[this.style.tailIcon,this.style.leftMargin]} active name={icon} />
                 </Item>
             )
         }

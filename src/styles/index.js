@@ -172,9 +172,11 @@ const petCardStyle = StyleCustom.create({
 
 const inputBaseStyle=StyleCustom.create({
     rightPadding:{
-        paddingRight:28
+        paddingRight:56
     },
-
+    leftMargin:{
+        marginLeft:28
+    },
     borderItem:{
         borderWidth:1,
     },
@@ -183,6 +185,10 @@ const inputBaseStyle=StyleCustom.create({
         width:28,
         color:'#b1b1b1',
         fontSize:14
+    },
+    tailIcon:{
+        width:28,
+        color:'#b1b1b1',
     },
     titleIco:{
         color:'#009688',
