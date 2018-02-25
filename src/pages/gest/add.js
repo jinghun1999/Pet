@@ -4,7 +4,7 @@ import {
 } from 'react-native';
 import {observer, inject} from 'mobx-react/native';
 import Base from '../base'
-import {Container,Content,Spinner} from 'native-base';
+import {Container,Content,Spinner,ActionSheet} from 'native-base';
 import {FootBar} from '../../components'
 import {From,InputText,InputTextIcon,InputChoose,InputDate,InputNumber} from '../../components/form'
 import addGestStore from "../../stores/gest/add";
@@ -16,7 +16,6 @@ export default class Add extends Base{
         super(props);
 
     }
-
     buttons=[{
         title:'提交',
         default:true,
@@ -28,10 +27,11 @@ export default class Add extends Base{
                 return;
             }
             //提交数据
-            let config = JSON.stringify(this.store.data);
-
             request.Gest.CommitAdd( this.store.data ).then(result=>{
-                showToast("增加成功!")
+                showToast("增加成功!");
+                const { navigation } = this.props;
+                navigation.navigate('GestDetail',{ id:result });
+
             },exception=>{
                 showToast( JSON.stringify(exception) );
             });
