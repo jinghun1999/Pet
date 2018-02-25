@@ -10,7 +10,7 @@ class AddGestStore extends Base {
         @observable GestCode:'',
         @validate(/\S+$/, '会员姓名必填')
         @observable GestName:'',
-        @observable RewardPoint:0,
+        //@observable RewardPoint:0,
         @observable GestSex:'',
         @observable GestBirthday:'',
         @observable MobilePhone:'',
@@ -20,7 +20,6 @@ class AddGestStore extends Base {
         @observable GestStyle:'',
         @observable Remark:'',
         @observable Status:'',
-
 
         @computed get validateItemGestName(){
             //1、自定义验证
@@ -44,9 +43,6 @@ class AddGestStore extends Base {
             this.onIniSource(result);
         },this.onFailed.bind(this));
     }
-
-
-
     @action onIniSource(result){
         this.addConfig=result;
         this.onShallCopy(this.data,{...result.Item});
@@ -64,6 +60,8 @@ class AddGestStore extends Base {
         this.SexTypes=result.SexTypes.extendMap(item=>({
             text : item.value_nameCN,
             value : item.Code}));
+
+        this.onFinishIni();//初始化结束
     }
 }
 

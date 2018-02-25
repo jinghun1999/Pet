@@ -2,10 +2,10 @@ import {observable, computed,extendObservable, action, runInAction, useStrict} f
 
 export default class Base {
     customValidateHeader = "validateItem";
-
     @observable submited=false;
-    @action onShallCopy(t,s){
+    @observable loadding=true;
 
+    @action onShallCopy(t,s){
         for(let key in s){
             if( t[key] == undefined ){
                 let o={};
@@ -16,8 +16,10 @@ export default class Base {
             }
         }
     }
+    @action onFinishIni(){
+        this.loadding=false;
+    }
     @action onValidate(){
-        alert("1");
         this.submited=true;
         let mess = [];//可以代码自动生成
         //1、自定义
