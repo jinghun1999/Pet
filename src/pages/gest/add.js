@@ -25,7 +25,16 @@ export default class Add extends Base{
             let warings = this.store.onValidate();
             if(warings && warings.length > 0 ){
                 showToast( warings.join("\r\n"));
+                return;
             }
+            //提交数据
+            let config = JSON.stringify(this.store.data);
+
+            request.Gest.CommitAdd( this.store.data ).then(result=>{
+                showToast("增加成功!")
+            },exception=>{
+                showToast( JSON.stringify(exception) );
+            });
         }
     }]
     componentWillMount(){
