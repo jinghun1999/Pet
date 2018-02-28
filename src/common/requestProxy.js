@@ -27,7 +27,8 @@ class WebApiProxy {
         GetPrePayRecord:params=>this.do(serverAddress,"Api/Report/GetPrePayRecord",RequestType.Get,params),
         GetSpendRecord:params=>this.do(serverAddress,"Api/Finance_SettleAccounts/SearchGestFinance",RequestType.Get,params),
         GetVipAddPageConfig:()=>this.do(serverAddress,"Api/Gest/GetVipAddPageConfig",RequestType.Get,{}),
-        CommitAdd:params=>this.do(serverAddress,"Api/Gest/AddGest",RequestType.Post,params)
+        CommitAdd:params=>this.do(serverAddress,"Api/Gest/AddGest",RequestType.Post,params),
+        GetGestById:params=>this.do(serverAddress,"Api/Gest/GetGestDetail",RequestType.Get,params)
     }
     Gload = {
         GetConfig:()=>this.do(serverAddress,"Api/Persons/GetUserConfig",RequestType.Get),

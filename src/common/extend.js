@@ -115,6 +115,23 @@ Array.prototype.extendMap=function(handler){
     return result;
 }
 
+Array.prototype.findSexLabel=function(code){
+    let sexItem = this.fristOne( o => o.Code == "1" );
+    if( !sexItem ){
+        return "";
+    }
+
+    result = sexItem.Details.fristOne( o => o.Code == code );
+    if(!result){
+        return "";
+    }else{
+        return result.value_nameCN;
+    }
+}
+
+
+
+
 //guid 生成
 class Guid {
     New() {

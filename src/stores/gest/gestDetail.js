@@ -8,43 +8,20 @@ useStrict(true);
 class gestDetailStore extends Base {
     //主数据
     @observable data={
-        GestName:'汤姆',
-        GestSex:'男',
-        GestBirthday:'2017-09-01',
-        GestAddress:'北京中南海2#2001',
-        EMail:'good@sohu.com',
-        IsVIP:'是',
-        VIPAccount:2009,
-        PrepayMoney:2590,
-        LevelName:'金卡',
     }
-    pets=[{
-        ID:'',
-        PetCode:'',
-        PetName:'',
-        PetSex:'',
-        PetBirthday:'2017-01-01',
-        Age:2,
-        PetSkinColor:'#202911',
-        PetBreed:''
-    },{
-        ID:'',
-        PetCode:'',
-        PetName:'',
-        PetSex:'',
-        PetBirthday:'2017-01-01',
-        Age:2,
-        PetSkinColor:'#202911',
-        PetBreed:''
-    },{
-        ID:'',
-        PetCode:'',
-        PetName:'',
-        PetSex:'',
-        PetBirthday:'2017-01-01',
-        Age:2,
-        PetSkinColor:'#202911',
-        PetBreed:''
-    }]
+    onFailed(exception){
+        showToast("检索会员信息失败");
+    }
+    onIni(id){
+        request.Gest.GetGestById({ID:id}).then(result=>{
+            this.onIniSource(result);
+        },this.onFailed.bind(this));
+    }
+    @action onIniSource(result){
+        this.onShallCopy(this.data,result.Gest);
+        this.pets=result.Pets;
+        this.onFinishIni();//初始化结束
+    }
+    pets=[]
 }
 export default new gestDetailStore();

@@ -23,7 +23,9 @@ export default class SimpleGest extends Component{
                     </Body>
                 </Left>
                 <Right>
-                        <Text note>金卡</Text>
+                    <TouchableOpacity>
+                        <Text note>添加宠物</Text>
+                    </TouchableOpacity>
                 </Right>
             </CardItem>
         </Card>
