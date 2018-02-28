@@ -44,7 +44,9 @@ export default class Detail extends Base{
     renderForm(){
         return <Container>
             <Content>
-                <SimpleGest></SimpleGest>
+                <SimpleGest name={this.store.data.GestName}
+                            mobile={this.store.data.MobilePhone}
+                            sex={this.store.data.GestSex} onPress={()=>{}}></SimpleGest>
                 <Card store={this.store}>
                     <CardHead label="会员信息" border={true} />
                     <CardItem label="等级：" name="LevelName" />

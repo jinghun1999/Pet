@@ -15,8 +15,8 @@ export default class Home extends Base{
     constructor(props){
         super(props);
         this.advs.push({id:'1',image:require('../resources/banner_home_1.jpg'),title:'北京将在年底举行第三次全国宠物医生交流大会'});
-        this.advs.push({id:'2',image:require('../resources/banner_home_2.jpg'),title:'中国将在2017年底实现动物医学教育正规化'});
-        this.advs.push({id:'3',image:require('../resources/banner_home_3.jpg'),title:'中国将在2017年底实现动物医学教育正规化'});
+        //this.advs.push({id:'2',image:require('../resources/banner_home_2.jpg'),title:'中国将在2017年底实现动物医学教育正规化'});
+        //this.advs.push({id:'3',image:require('../resources/banner_home_3.jpg'),title:'中国将在2017年底实现动物医学教育正规化'});
     }
     advs = [];
     render(){

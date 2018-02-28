@@ -13,17 +13,20 @@ export default class SimpleGest extends Component{
     componentDidMount(){
     }
     render(){
+        let {name,mobile,sex,onPress}=this.props;
         return <Card>
             <CardItem>
                 <Left>
-                    <Icon name="ios-person"></Icon>
+                    {
+                        sex=="男"?<Icon name="ios-person"></Icon>:<Icon name="ios-woman"></Icon>
+                    }
                     <Body>
-                        <H2>汤姆</H2>
-                        <Text note>1838272626652</Text>
+                        <H2>{name}</H2>
+                        <Text note>{mobile}</Text>
                     </Body>
                 </Left>
                 <Right>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={onPress}>
                         <Text note>添加宠物</Text>
                     </TouchableOpacity>
                 </Right>
