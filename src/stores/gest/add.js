@@ -39,7 +39,7 @@ class AddGestStore extends Base {
         showToast("检索会员信息失败");
     }
     onIni(){
-        request.Gest.GetVipAddPageConfig().then(result=>{
+        serviceProxy.Gest.GetVipAddPageConfig().then(result=>{
             this.onIniSource(result);
         },this.onFailed.bind(this));
     }

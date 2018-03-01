@@ -40,10 +40,10 @@ export default class AddPet extends Base{
             <InputText label="昵称" name="PetName" placeholder="请输入宠物昵称"></InputText>
             <InputDate label="生日" name="PetBirthday" placeholder="请输入宠物生日"></InputDate>
             <InputNumber label="年龄" name="Age" placeholder="请输入宠物年龄"></InputNumber>
+            <InputChoose label="种类" name="MdicTypeName" placeholder="请输入宠物种类" optionslabel="选择种类" options={this.store.Races} onChanged={this.store.onRacesChanged.bind(this.store)}></InputChoose>
 
-
-            <InputChoose label="种类" name="MdicTypeName" placeholder="请输入宠物种类" optionslabel="选择种类" options={this.store.Races}></InputChoose>
             <InputChoose label="品种" name="PetBreed" placeholder="请输入宠物品种" optionslabel="选择品种" options={this.store.Breeds}></InputChoose>
+
             <InputChoose label="颜色" name="PetSkinColor" placeholder="请输入宠物颜色" optionslabel="选择宠物颜色" options={this.store.Colors}></InputChoose>
             <InputText label="病历号" name="SickFileCode" placeholder="请输入宠物病历号"></InputText>
             <InputChoose label="绝育状态" name="BirthStatus" placeholder="请输入绝育状态" optionslabel="选择绝育状态" options={this.store.BirthStatus}></InputChoose>

@@ -13,7 +13,7 @@ class gestDetailStore extends Base {
         showToast("检索会员信息失败");
     }
     onIni(id){
-        request.Gest.GetGestById({ID:id}).then(result=>{
+        serviceProxy.Gest.GetGestById({ID:id}).then(result=>{
             this.onIniSource(result);
         },this.onFailed.bind(this));
     }

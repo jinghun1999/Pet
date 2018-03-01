@@ -23,7 +23,6 @@ export default class Welcome extends Base{
             this.readyApp(this.props.navigation,this.stores.loginStore);
         });
     }
-
     readyApp(navigation,loginStore){
         serviceProxy.onReady(navigation,loginStore);
         serviceProxy.Gload.GetConfig().then(function(o){
@@ -40,7 +39,6 @@ export default class Welcome extends Base{
             showToast(err.mess);
         });
     }
-
     render(){
         let { loading } = this.store;
         return (

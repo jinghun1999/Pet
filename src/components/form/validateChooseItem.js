@@ -13,9 +13,9 @@ class ValidateChooseItem extends InputBase{
         super(props);
     }
     render(){
-        let {label,name, placeholder,store,options,optionslabel,...props} = this.props;
-        let onChanged = store.onUpdate.bind(store);
+        let {label,name, placeholder,store,options,optionslabel,onChanged,...props} = this.props;
         let onPress =() => {
+
             if(options.length==0){
                 return;
             }
@@ -29,7 +29,12 @@ class ValidateChooseItem extends InputBase{
                 },
                 (index) => {
                     if( index >= 0 && index < options.length ){
-                        onChanged(name,options[index].value);
+                        if(!onChanged){
+                            onChanged=store.onUpdate.bind(store);
+                            onChanged(name,options[index].value);
+                        }else{
+                            onChanged(name,options[index]);
+                        }
                     }
                 }
             )

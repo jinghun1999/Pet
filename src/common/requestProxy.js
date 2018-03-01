@@ -1,4 +1,4 @@
-import request from './request'
+import request from './request';
 
 //请求类型
 const RequestType={
@@ -33,7 +33,10 @@ class WebApiProxy {
     Pet ={
         GetAddPetConfig:params=>this.do(serverAddress,"Api/Pet/GetAddPetConfig",RequestType.Get,params)
     }
-    Gload = {
+    PetRace={
+        GetItems:params=>this.do(serverAddress,"Api/PetSmallRace/GetModelList",RequestType.Post,params)
+    }
+    Gload={
         GetConfig:()=>this.do(serverAddress,"Api/Persons/GetUserConfig",RequestType.Get),
     }
     do(head,url,type,params){
@@ -84,9 +87,7 @@ class WebApiProxy {
             exception(err);
         });
     }
-
     Navigation=null;
     LoginStore=null;
 };
-
 export default new WebApiProxy();

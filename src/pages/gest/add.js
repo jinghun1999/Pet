@@ -14,7 +14,6 @@ import addGestStore from "../../stores/gest/add";
 export default class Add extends Base{
     constructor(props){
         super(props);
-
     }
     buttons=[{
         title:'提交',
@@ -23,11 +22,11 @@ export default class Add extends Base{
         onPress:()=>{
             let warings = this.store.onValidate();
             if(warings && warings.length > 0 ){
-                showToast( warings.join("\r\n"));
+                showToast(warings.join("\r\n"));
                 return;
             }
             //提交数据
-            request.Gest.CommitAdd( this.store.data ).then(result=>{
+            serviceProxy.Gest.CommitAdd( this.store.data ).then(result=>{
                 showToast("增加成功!");
                 const { navigation } = this.props;
                 navigation.navigate('GestDetail',{ id:result });
@@ -38,7 +37,6 @@ export default class Add extends Base{
         }
     }]
     componentWillMount(){
-
     }
     componentDidMount(){
         this.store.onIni();
@@ -69,7 +67,6 @@ export default class Add extends Base{
         }
     }
     renderFooter(){
-
         if(!this.store.loadding){
             return <FootBar buttons={this.buttons}></FootBar>;
         }else{

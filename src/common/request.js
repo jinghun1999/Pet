@@ -98,11 +98,14 @@ const request = {
             } else if (typeof params == 'object' && params instanceof FormData) {
                 body = params;
                 headers["Content-Type"] = 'multipart/form-data';
-            } else {
+            } else if( typeof params == 'object' && params instanceof Array ){
+                headers['Content-Type'] = 'application/json';
+                body = JSON.stringify(params);
+            }
+            else {
                 body = params;
             }
         }
-
         return new Promise(function (resolve, reject) {
             let successCallback = (result) => {
                 resolve(result)//成功调用
