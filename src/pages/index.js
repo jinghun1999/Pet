@@ -8,6 +8,7 @@ import balance from './gest/balance'
 import payment from './gest/payment'
 import spend from './gest/spend'
 import gestAdd from './gest/add'
+import petAdd from './gest/addPet'
 
 export default {
     homePage,
@@ -19,5 +20,6 @@ export default {
     balance,
     payment,
     spend,
-    gestAdd
+    gestAdd,
+    petAdd
 }

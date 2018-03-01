@@ -41,12 +41,19 @@ export default class Detail extends Base{
         const { navigation } = this.props;
         navigation.navigate('Spend',{ id:this.gestId });
     }
+
+    onAddPetPress(){
+        const { navigation } = this.props;
+        const id = this.props.navigation.state.params.id;
+        navigation.navigate('PetAdd',{ id:id });
+    }
+
     renderForm(){
         return <Container>
             <Content>
                 <SimpleGest name={this.store.data.GestName}
                             mobile={this.store.data.MobilePhone}
-                            sex={this.store.data.GestSex} onPress={()=>{}}></SimpleGest>
+                            sex={this.store.data.GestSex} onPress={this.onAddPetPress.bind(this)}></SimpleGest>
                 <Card store={this.store}>
                     <CardHead label="会员信息" border={true} />
                     <CardItem label="等级：" name="LevelName" />

@@ -30,6 +30,9 @@ class WebApiProxy {
         CommitAdd:params=>this.do(serverAddress,"Api/Gest/AddGest",RequestType.Post,params),
         GetGestById:params=>this.do(serverAddress,"Api/Gest/GetGestDetail",RequestType.Get,params)
     }
+    Pet ={
+        GetAddPetConfig:params=>this.do(serverAddress,"Api/Pet/GetAddPetConfig",RequestType.Get,params)
+    }
     Gload = {
         GetConfig:()=>this.do(serverAddress,"Api/Persons/GetUserConfig",RequestType.Get),
     }

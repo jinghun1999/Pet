@@ -30,15 +30,26 @@ class ValidateInputDate extends InputBase{
             showToast(message);
         }
     }
+    static defaultProps = {
+        formate:"yyyy-MM-dd",
+    }
     render(){
-        let {label,name, placeholder,store} = this.props;
+        let {label,name,formate, placeholder,store} = this.props;
         let onChanged = store.onUpdate.bind(store);
+        let value = store.data[name];
+        if( value && (value instanceof Date) ){
+            value = value.Format(formate);
+        }
+        else if(value){
+            value = value.ToDate().Format(formate);
+        }
+
 
         if(store.submited && validateHepler.getMess(store.data,name)){
             return (
                 <Item error fixedLabel onPress={this.showDatePicker.bind(this)}>
                     <Label>{label}</Label>
-                    <Input editable={false} placeholder={placeholder} value={store.data[name]} placeholderTextColor='#b1b1b1'  onChangeText={txt => onChanged(name,txt)} />
+                    <Input editable={false} placeholder={placeholder} value={value} placeholderTextColor='#b1b1b1'  onChangeText={txt => onChanged(name,txt)} />
                     <Icon name='close-circle' style={[this.style.leftMargin]} />
                 </Item>
             )
@@ -46,7 +57,7 @@ class ValidateInputDate extends InputBase{
             return (
                 <Item fixedLabel style={this.style.rightPadding} onPress={this.showDatePicker.bind(this)}>
                     <Label>{label}</Label>
-                    <Input  editable={false} placeholder={placeholder} value={store.data[name]} placeholderTextColor='#b1b1b1' onChangeText={txt => onChanged(name,txt)} />
+                    <Input  editable={false} placeholder={placeholder} value={value} placeholderTextColor='#b1b1b1' onChangeText={txt => onChanged(name,txt)} />
                 </Item>
             )
         }
