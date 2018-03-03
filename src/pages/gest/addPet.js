@@ -26,6 +26,13 @@ export default class AddPet extends Base{
                 showToast( warings.join("\r\n"));
                 return;
             }
+            this.store.onCommit().then(r=>{
+                showToast("提交成功!");
+                const { navigation } = this.props;
+                navigation.navigate('GestDetail',{ id:r.GestId });
+            },e=>{
+                showToast("提交宠物信息失败");
+            });
         }
     }]
     componentWillMount(){
@@ -40,7 +47,7 @@ export default class AddPet extends Base{
             <InputText label="昵称" name="PetName" placeholder="请输入宠物昵称"></InputText>
             <InputDate label="生日" name="PetBirthday" placeholder="请输入宠物生日"></InputDate>
             <InputNumber label="年龄" name="Age" placeholder="请输入宠物年龄"></InputNumber>
-            <InputChoose label="种类" name="MdicTypeName" placeholder="请输入宠物种类" optionslabel="选择种类" options={this.store.Races} onChanged={this.store.onRacesChanged.bind(this.store)}></InputChoose>
+            <InputChoose label="种类" name="PetRace" placeholder="请输入宠物种类" optionslabel="选择种类" options={this.store.Races} onChanged={this.store.onRacesChanged.bind(this.store)}></InputChoose>
 
             <InputChoose label="品种" name="PetBreed" placeholder="请输入宠物品种" optionslabel="选择品种" options={this.store.Breeds}></InputChoose>
 
@@ -62,7 +69,6 @@ export default class AddPet extends Base{
         }
     }
     renderFooter(){
-
         if(!this.store.loadding){
             return <FootBar buttons={this.buttons}></FootBar>;
         }else{

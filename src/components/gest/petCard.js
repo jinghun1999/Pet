@@ -19,21 +19,35 @@ export default class PetCard extends Component{
     }
     render(){
         let {pet,petCardStyle} = this.props;
+
+        let url = require('../../resources/dog.png');
+        if(pet.PetHead !=null ){
+            url = "data:image/png;base64," + pet.PetHead;
+        }
+
         return <View style={petCardStyle.body}>
             <View style={petCardStyle.imageView}>
-                <Image
-                    style={petCardStyle.image}
-                    resizeMode="contain"
-                    source={require('../../resources/dog.png')} />
+                {
+                    pet.PetHead?<Image
+                        style={petCardStyle.image}
+                        resizeMode="contain"
+                        source={{uri:url}} />:
+                        <Image
+                        style={petCardStyle.image}
+                        resizeMode="contain"
+                        source={url} />
+                }
             </View>
             <View style={petCardStyle.info}>
                 <View style={petCardStyle.row}>
-                    <Text style={petCardStyle.name}>小黑</Text>
-                    <Text style={petCardStyle.breed}>秋田犬</Text>
+                    <Text style={petCardStyle.name}>{pet.PetName}</Text>
+                    <Text style={petCardStyle.breed}>{pet.PetBreed}</Text>
                 </View>
                 <View style={petCardStyle.row}>
-                    <RightLabel style={{marginLeft:10}} label="月" txt="15" labelStyle={{color:'#ABABAB'}} txtStyle={{fontSize:18,color:'#2169D5'}}></RightLabel>
-                    <LeftLabel style={{flex:1,justifyContent:'flex-end',marginRight:10}} label="生日：" txt="2017-01-09" labelStyle={{color:'#ABABAB'}} txtStyle={{fontSize:16}}></LeftLabel>
+                    {
+                        pet.Age?<RightLabel style={{marginLeft:10}} label="日" txt={pet.Age} labelStyle={{color:'#ABABAB'}} txtStyle={{fontSize:18,color:'#2169D5'}}></RightLabel>:null
+                    }
+                    <LeftLabel style={{flex:1,justifyContent:'flex-end',marginRight:10}} label="生日：" txt={pet.PetBirthday.ToDate().Format("yyyy-MM-dd")} labelStyle={{color:'#ABABAB'}} txtStyle={{fontSize:16}}></LeftLabel>
                 </View>
             </View>
         </View>

@@ -20,6 +20,7 @@ class gestDetailStore extends Base {
     @action onIniSource(result){
         this.onShallCopy(this.data,result.Gest);
         this.pets=result.Pets;
+
         this.onFinishIni();//初始化结束
     }
     pets=[]

@@ -6,8 +6,15 @@ useStrict(true);
 class AddPetStore extends Base {
     //主数据
     @observable data={
+        @computed get validateItemPetName(){
+            //1、自定义验证
+            if(this.PetName==null || this.PetName=="") {
+                return "宠物昵称必填";//返回错误信息
+            }else{
+                return "";
+            }
+        },
     }
-
     Races=[]//种类
     @observable Breeds=[]//品种
     BirthStatus=[]//绝育状态
@@ -27,15 +34,15 @@ class AddPetStore extends Base {
     }
     onRacesChanged(name,item){
         this.onUpdate(name,item.value);//更新值
+        this.onUpdate("MdicTypeName",item.item.MdicTypeName);//更新值
         this.onUpdate("PetBreed","");//更新值
 
         serviceProxy.PetRace.GetItems([{
             Field:"RaceID",
             Operator:appParamter.RelationOperators["BeEqualTo"],
-            DataType:0,
-            Title:"",
+            DataType:appParamter.QueryItemDataType.String,
             Childrens:null,
-            Value:item.value.toString(),
+            Value:item.item.ID.toString(),
             Conn:0
         }]).then(result=>{
             runInAction( ()=> {
@@ -49,13 +56,15 @@ class AddPetStore extends Base {
     }
     @action onIniSource(result){
         this.onShallCopy(this.data,{...result.Item});
+
         this.Races=result.Races.map(item=>({
             text : item.BigTypeName,
-            value : item.ID
+            value : item.BigTypeName,
+            item : item
         }));
         this.BirthStatus=result.BirthStatus.extendMap(item=>({
             text : item.value_nameCN,
-            value : item.Code
+            value : item.value_nameCN
         }));
         this.Sexs=result.Sexs.extendMap(item=>({
             text : item.value_nameCN,
@@ -70,7 +79,9 @@ class AddPetStore extends Base {
             value : item.Code
         }));
         this.onFinishIni();//初始化结束
-
+    }
+    @action onCommit(){
+        return serviceProxy.Pet.CommitAdd( this.data );
     }
 }
 
