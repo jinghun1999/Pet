@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {
+    View
 } from 'react-native';
 import {observer, inject} from 'mobx-react/native';
 import Base from '../base'
@@ -13,6 +14,10 @@ export default class Balance extends Base{
         super(props);
         this.store.onIni(this.props.navigation.state.params.id);
     }
+    static navigationOptions = ({navigation})=>({
+        headerTitle: "预付金",
+        headerRight: <View></View>
+    });
     render(){
         return (<Container>
             <Content>

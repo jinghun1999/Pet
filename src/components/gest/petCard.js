@@ -19,24 +19,13 @@ export default class PetCard extends Component{
     }
     render(){
         let {pet,petCardStyle} = this.props;
-
         let url = require('../../resources/dog.png');
-        if(pet.PetHead !=null ){
-            url = "data:image/png;base64," + pet.PetHead;
-        }
-
         return <View style={petCardStyle.body}>
             <View style={petCardStyle.imageView}>
-                {
-                    pet.PetHead?<Image
-                        style={petCardStyle.image}
-                        resizeMode="contain"
-                        source={{uri:url}} />:
                         <Image
                         style={petCardStyle.image}
                         resizeMode="contain"
                         source={url} />
-                }
             </View>
             <View style={petCardStyle.info}>
                 <View style={petCardStyle.row}>

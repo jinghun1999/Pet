@@ -17,6 +17,9 @@ export default class Login extends Base{
     constructor(props){
         super(props);
     }
+    static navigationOptions = ({navigation})=>({
+        header:null
+    });
     buttons=[];
     componentWillMount(){
         const { dispatch } = this.props.navigation;

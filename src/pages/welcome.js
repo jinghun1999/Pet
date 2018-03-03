@@ -17,7 +17,9 @@ export default class Welcome extends Base{
     constructor(props){
         super(props);
     }
-
+    static navigationOptions = ({navigation})=>({
+        header:null
+    });
     componentDidMount(){
         this.stores.loginStore.onLoadLocal(r=>{
             this.readyApp(this.props.navigation,this.stores.loginStore);
@@ -31,7 +33,7 @@ export default class Welcome extends Base{
             resetAction = NavigationActions.reset({
                 index: 0,
                 actions: [
-                    NavigationActions.navigate({routeName:'Main',params:{transition:'forVertical'}})//要跳转到的页面名字forVertical、forHorizontal
+                    NavigationActions.navigate({routeName:'Main',params:{transition:'forVertical'}})
                 ]
             });
             dispatch(resetAction)

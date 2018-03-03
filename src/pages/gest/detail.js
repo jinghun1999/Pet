@@ -16,6 +16,10 @@ export default class Detail extends Base{
         super(props);
         this.store.onIni(this.props.navigation.state.params.id);
     }
+    static navigationOptions = ({navigation})=>({
+        headerTitle: "详情",
+        headerRight: <View></View>
+    });
     buttons=[{
         title:'收银' ,
         style:{flex:1} ,
