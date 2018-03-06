@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import {observer, inject} from 'mobx-react/native';
 import {Container,Content,Icon,Button} from 'native-base';
+import R from '../common/rowView'
 
 @inject('saleListStyle')
 @observer
@@ -21,15 +22,32 @@ export default class SaleList extends Component{
     style={};
     renderRow({item, index}){
         let {onPress} = this.props;
+        let {Row,Left,Right,Center} = R;
+
         return (
             <TouchableOpacity activeOpacity={0.5} onPress={()=>onPress(item)}>
-                <View style={this.style.row}>
-                    <View style={this.style.rowItem}>
-
-                    </View>
-                    <View style={this.style.rowItem}>
-                    </View>
-                </View>
+                <Row style={{height:30}}>
+                    <Left>
+                        <Text style={this.style.GestTxt}>张三</Text>
+                    </Left>
+                    <Right>
+                        <Icon name="ios-calendar-outline"  style={this.style.YangIco} />
+                        <Text>2017-09-01</Text>
+                    </Right>
+                </Row>
+                <Row style={{height:30}}>
+                    <Left>
+                        <Icon name="logo-yen" style={this.style.YangIco}></Icon>
+                        <Text>200</Text>
+                    </Left>
+                    <Center>
+                        <Icon name="md-person" style={this.style.YangIco}></Icon>
+                        <Text>店长</Text>
+                    </Center>
+                    <Right>
+                        <Text>已结算</Text>
+                    </Right>
+                </Row>
             </TouchableOpacity>
         );
     }

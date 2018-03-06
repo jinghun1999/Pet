@@ -16,6 +16,7 @@ import SpendList from './gest/spendList'
 import SallSearchBar from './sa/searchBar'
 import SaleList from './sa/saleList'
 import {ViewBar,Left,Center,Rigth} from './common/viewBar'
+import R from './common/rowView'
 
 export {
     Logo,SwiperBanner,Summary,
@@ -24,5 +25,5 @@ export {
     LeftIcon,RightIcon,FootBar,
     BalanceList,PaymentList,SpendList,
     SallSearchBar,SaleList,ViewBar,Left,
-    Center,Rigth
+    Center,Rigth,R
 }
