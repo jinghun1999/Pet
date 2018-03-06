@@ -262,4 +262,23 @@ const spendStyle=StyleCustom.create({
     }
 });
 
-export default {homeStyle,welcomeStyle,loginStyle,inputBaseStyle,gestHomeStyle,gestSimpleStyle,petCardStyle,balanceStyle,spendStyle}
+const saleListStyle=StyleCustom.create({
+    container:{
+        flex:1
+    },
+    row:{
+        height:65,
+        justifyContent:'center',
+        marginLeft:20,
+        marginRight:20
+    },
+    rowItem:{
+        flexDirection:'row',
+        height:35,
+        justifyContent:'center',
+        alignItems:'center'
+    },
+
+});
+
+export default {homeStyle,welcomeStyle,loginStyle,inputBaseStyle,gestHomeStyle,gestSimpleStyle,petCardStyle,balanceStyle,spendStyle,saleListStyle}

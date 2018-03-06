@@ -9,7 +9,7 @@ import payment from './gest/payment'
 import spend from './gest/spend'
 import gestAdd from './gest/add'
 import petAdd from './gest/addPet'
-import saleList from './sa/list'
+import saleList from './sa/home'
 
 export default {
     homePage,

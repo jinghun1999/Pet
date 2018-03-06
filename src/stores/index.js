@@ -9,6 +9,7 @@ import paymentListStore from './gest/payment'
 import spendStore from './gest/spend'
 import addGestStore from './gest/add'
 import addPetStore from './gest/addPet'
+import saleListStore from './sa/saleList'
 
 export default {
     homeStore,
@@ -21,5 +22,6 @@ export default {
     paymentListStore,
     spendStore,
     addGestStore,
-    addPetStore
+    addPetStore,
+    saleListStore
 }

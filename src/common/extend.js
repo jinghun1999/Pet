@@ -1,6 +1,6 @@
 import pinyin from "./pinyin";
 import uuid from "uuid";
-import {Platform, ToastAndroid} from "react-native";
+import {Platform, StyleSheet, ToastAndroid} from "react-native";
 
 //浅拷贝
 // Object.prototype.CustomShallowCopy=function (source) {
@@ -22,7 +22,6 @@ Date.prototype.InterVal=function (date) {
     var seconds=Math.round(leave3/1000)
     return (days * 24 * 60) + (hours*60) + minutes + (seconds / 60.00);//" 相差 "+days+"天 "+hours+"小时 "+minutes+" 分钟"+seconds+" 秒"
 }
-
 //日期格式化
 Date.prototype.Format = function (fmt) {
     var o = {
@@ -114,7 +113,6 @@ Array.prototype.extendMap=function(handler){
 
     return result;
 }
-
 Array.prototype.findSexLabel=function(code){
     let sexItem = this.fristOne( o => o.Code == "1" );
     if( !sexItem ){
@@ -128,9 +126,6 @@ Array.prototype.findSexLabel=function(code){
         return result.value_nameCN;
     }
 }
-
-
-
 
 //guid 生成
 class Guid {

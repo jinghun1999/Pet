@@ -37,6 +37,9 @@ class WebApiProxy {
     PetRace={
         GetItems:params=>this.do(serverAddress,"Api/PetSmallRace/GetModelList",RequestType.Post,params)
     }
+    SettleAccounts={
+        SearchPageData:params=>this.do(serverAddress,"Api/Finance_SettleAccounts/SearchPageData",RequestType.Get,params)
+    }
     Gload={
         GetConfig:()=>this.do(serverAddress,"Api/Persons/GetUserConfig",RequestType.Get),
     }
